@@ -1,0 +1,22 @@
+{
+  "name": "mg_cli",
+  "version": "1.0.0",
+  "description": "Make Extend and Overide Magento From the CLI",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "hello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IasonArgyrakis/mg_cli.git"
+  },
+  "author": "Json Argyrakis",
+  "license": "ISC",
+  "bin": {
+    "hello": "./bin/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/IasonArgyrakis/mg_cli/issues"
+  },
+  "homepage": "https://github.com/IasonArgyrakis/mg_cli#readme"
+}
