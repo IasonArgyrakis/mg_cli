@@ -33,7 +33,7 @@ Directives : placeholder
 
 ## ToDo 
 
-@toDo : -[x]  Make Hello Wolrd 
+-[x]  @toDo :  Make Hello Wolrd 
 
 @toDo : -[ ]  Make ProtoTemplates
 
