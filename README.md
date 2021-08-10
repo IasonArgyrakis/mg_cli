@@ -27,7 +27,7 @@ Atributes : How it does it ( example: Do you want `js` | `css` )
 
 Directives : placeholder
 
---
+---
 
 ## ToDo | Features | Ideas
 
