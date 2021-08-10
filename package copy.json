@@ -13,7 +13,7 @@
   "author": "Json Argyrakis",
   "license": "ISC",
   "bin": {
-    "mg": "bin/cli.js"
+    "MG": "./bin/cli.js"
   },
   "bugs": {
     "url": "https://github.com/IasonArgyrakis/mg_cli/issues"
@@ -23,6 +23,5 @@
     "boxen": "4.0",
     "chalk": "2.4",
     "yargs": "13.2"
-  },
-  "devDependencies": {}
+  }
 }
