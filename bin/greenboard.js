@@ -7,6 +7,13 @@ const boxenOptions = {
     borderColor: "green",
     backgroundColor: "#555555"
 };
+const boxenOptions_red = {
+    padding: 1,
+    margin: 1,
+    borderStyle: "round",
+    borderColor: "red",
+    backgroundColor: "#555555"
+};
 
 
 const write=(text)=> {
@@ -14,4 +21,11 @@ const write=(text)=> {
     return boxen(greeting, boxenOptions)
 }
 
+const error=(text)=> {
+    let greeting = chalk.white.bold(text);
+    return boxen(greeting, boxenOptions_red)
+}
+
+
 exports.write = write
+exports.error = error
