@@ -29,7 +29,7 @@ Directives : placeholder
 
 ---
 
-## ToDo | Features | Ideas
+## ToDo 
 
 @toDo : -[ ]  Make Hello Wolrd 
 
@@ -52,6 +52,14 @@ Milestone One_point_five -[ ]
 @toDo : -[ ]  XML Directives (add the mg_generated_module to a view  index | static-page | product-category 
 
 @toDo : -[ ]   add the mg_generated_module
+
+---
+
+##  Features | Ideas 
+
+Stuff to make using the tool 
+
+nonoce-js (make a js pool of scripts) for head | body | blocks etc using observers  
 
 
 
