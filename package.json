@@ -13,10 +13,14 @@
   "author": "Json Argyrakis",
   "license": "ISC",
   "bin": {
-    "hello": "./bin/index.js"
+    "mg": "./bin/index.js"
   },
   "bugs": {
     "url": "https://github.com/IasonArgyrakis/mg_cli/issues"
   },
-  "homepage": "https://github.com/IasonArgyrakis/mg_cli#readme"
+  "homepage": "https://github.com/IasonArgyrakis/mg_cli#readme",
+  "dependencies": {
+    "boxen": "4.0",
+    "chalk": "2.4"
+  }
 }
