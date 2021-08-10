@@ -12,6 +12,9 @@ const fs = require('fs');
 const path = require('path');
 const { check } = require('yargs');
 
+
+
+
 handler = function (argv) {
 
   if (argv.plugName === '') {
@@ -33,23 +36,53 @@ handler = function (argv) {
     //   console.log('MG_CLI made');
     // });
 
+
+    //Make Plugin Root folder Populate it based on the tempalate
     // console.log(fs.mkdir(path.join(process.env.PWD, 'MG_CLI/' + argv.plugName), (err) => {
     //   if (err && err.errno==-17) {
     //     return console.log(greenboard.error("plugin already existis"));
     //   }
     //   console.log('PLug Directory created successfully!');
-    // }));
-
-    //Describe the template 
+    // }));    
     
-    pluginRoot= 'MG_CLI/' + argv.plugName;
-    fs.readdir(testFolder, (err, files) => {
-      files.forEach(file => {
-        console.log(file);
-      });
-    });
+    pluginRootFolder= process.env.PWD+'/MG_CLI/' + argv.plugName+'/';
+    console.log(pluginRootFolder);
+  
+    console.log(__dirname);
+    const dree = require('dree');   
+    dree.scanAsync(__dirname+'/Templates/Plugin/MG_CLI/plug-in-name/')
+      .then(function (tree) {
+        
+        let children=tree.children;
+        for (let i = 0; i < children.length; i++) {
+          recurisiveChildren(children[i])
+        }
 
+        
+        
+      });
+  } 
+
+  function recurisiveChildren(obj){
+    if(obj.type==="directory"){
+    let children=obj.children;
+        for (let i = 0; i < children.length; i++) {
+          console.log(children[i])
+          recurisiveChildren(children[i])
+        }
+      }
+      else{
+        fs.readFile('/Users/joe/test.txt', 'utf8' , (err, data) => {
+          if (err) {
+            console.error(err)
+            return
+          }
+          console.log(data)
+        })
+      }
   }
+
+  
 
 }
 exports.handler = handler;
