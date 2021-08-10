@@ -23,6 +23,8 @@ Case : Where it does it ( will the consumer ever see it )
 
 Parameters :  Is it a custom implementation of smth ? 
 
+`--Block` `--Helper` `--Controler` `--etc` `--Model` `--Observer` `--view`
+
 Atributes : How it does it ( example: Do you want `js` | `css` )
 
 Directives : placeholder
