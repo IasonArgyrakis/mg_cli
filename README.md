@@ -33,9 +33,9 @@ Directives : placeholder
 
 ## ToDo 
 
--[x]  @toDo :  Make Hello Wolrd 
+@toDo : - [x]  Make Hello Wolrd 
 
-@toDo : -[ ]  Make ProtoTemplates
+@toDo : - [ ]  Make ProtoTemplates
 
 @toDo : -[ ]  Make ProtoTempaltes for Vendor_Overides Note: fallbacks 
 
