@@ -85,7 +85,11 @@ Milestone One_point_five -[ ]
 
 Stuff to make using the tool 
 
-nonoce-js (make a js pool of scripts) for head | body | blocks etc using observers  
+nonoce-js (make a js pool of scripts) for head | body | blocks etc using observers 
+
+ez-ass-pie dynamiclaly build and add layout `xml` `phtml` for pages such as Index | category | product | custom-feature
+* custom-feature placeholder for custom ui stuff
+   example  Azera(https://azera.smart-digital.gr/?templatehints=magento) `/var/www/vhosts/smart-digital.gr/azera.smart-digital.gr/app/design/frontend/DigitalUp/diogenes/DigitalUp_Diogenes/templates/html/homepage/sections/services.phtml`
 
 
 
