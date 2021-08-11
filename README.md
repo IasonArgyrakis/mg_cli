@@ -1,6 +1,14 @@
 # Mg_cli
 With this CLI tool you can make modules dynamically for the Magento frame-work faster better cleaner 
 
+---
+# Table of Contents
+1. [Install](#install)
+2. [The Vison](#the-vision)
+3. [Commands](#commands)
+4. [ToDo](#todo)
+5. [features ideas](#features--ideas)
+
 ## Install
 
  1. `git clone https://github.com/IasonArgyrakis/mg_cli.git`
@@ -12,7 +20,11 @@ With this CLI tool you can make modules dynamically for the Magento frame-work f
 
 ## The Vison
 
-Ditch the online module makers have one built in in your cli 
+Ditch the online module makers!
+
+Have one built in in your cli
+
+
 
 ---
 ## Assists for Dev
@@ -42,6 +54,10 @@ Directives : placeholder
 ## ToDo 
 
 @toDo : - [x]  Make Hello Wolrd  
+
+@toDo : - [x]  Parse Complex filenames
+
+@toDo : - [ ]  make or copy Complex filenames to pwd dir
 
 @toDo : - [ ]  Make ProtoTemplates
 
