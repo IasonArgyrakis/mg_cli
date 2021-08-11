@@ -25,10 +25,10 @@ handler = function (argv) {
 
     console.log(greenboard.write(argv.plugName))
     console.log(process.env.PWD)
-    //Make plugin Direcotry
 
-    
-    
+
+    //Make New pluginVendor Direcotry
+
     // fs.mkdir(path.join(process.env.PWD, 'MG_CLI'), { recursive: true }, (err) => {
     //   if (err) {
     //     return console.error(err);
@@ -37,52 +37,89 @@ handler = function (argv) {
     // });
 
 
-    //Make Plugin Root folder Populate it based on the tempalate
+    //Make Plugin module Diractory 
+
     // console.log(fs.mkdir(path.join(process.env.PWD, 'MG_CLI/' + argv.plugName), (err) => {
     //   if (err && err.errno==-17) {
     //     return console.log(greenboard.error("plugin already existis"));
     //   }
     //   console.log('PLug Directory created successfully!');
     // }));    
-    
-    pluginRootFolder= process.env.PWD+'/MG_CLI/' + argv.plugName+'/';
+
+    pluginRootFolder = process.env.PWD + '/MG_CLI/' + argv.plugName + '/';
     console.log(pluginRootFolder);
-  
-    console.log(__dirname);
-    const dree = require('dree');   
-    dree.scanAsync(__dirname+'/Templates/Plugin/MG_CLI/plug-in-name/')
+
+    //console.log(__dirname);
+    const dree = require('dree');
+    dree.scanAsync(__dirname + '/Templates/Plugin/MG_CLI/plug-in-name/')
       .then(function (tree) {
-        
-        let children=tree.children;
+
+        let children = tree.children;
         for (let i = 0; i < children.length; i++) {
           recurisiveChildren(children[i])
         }
 
-        
-        
+
+
       });
-  } 
-
-  function recurisiveChildren(obj){
-    if(obj.type==="directory"){
-    let children=obj.children;
-        for (let i = 0; i < children.length; i++) {
-          console.log(children[i])
-          recurisiveChildren(children[i])
-        }
-      }
-      else{
-        fs.readFile('/Users/joe/test.txt', 'utf8' , (err, data) => {
-          if (err) {
-            console.error(err)
-            return
-          }
-          console.log(data)
-        })
-      }
   }
 
-  
+  //Populate it based on the tempalate
 
-}
-exports.handler = handler;
+  function recurisiveChildren(obj) {
+    //if directory keep digiing
+    if (obj.type === "directory") {
+      let children = obj.children;
+      for (let i = 0; i < children.length; i++) {
+
+        recurisiveChildren(children[i])
+      }
+    }
+    else {
+      createFileFromRelativePath(obj.relativePath)
+
+      // fs.readFile(obj.path, 'utf8' , (err, data) => {
+      //   if (err) {
+      //     console.error(err)
+      //     return
+      //   }
+
+      //   //make file into tempalte
+      //   var template = Handlebars.compile(data);
+      //   template({ VendorName, pluginName: argv.plugName })
+
+
+      // })
+    }
+
+    
+    function createFileFromRelativePath(RelativePath) {
+
+      RelativePath_Arr = RelativePath.split("/");
+      console.log(RelativePath_Arr);
+      //Define the path to berelative from where the cli was called  `process.env.PWD`
+      let newDirPath = './'
+      for (let i = 0; i < RelativePath_Arr.length; i++) {
+        newDirPath = RelativePath_Arr[i] + "/"
+        if (i !== RelativePath_Arr.length - 1) {
+          fs.mkdir(path.join(process.env.PWD,newDirPath), { recursive: true }, (err) => {
+            if (err) {
+              return console.error(err);
+            }
+            console.log('made ' +newDirPath );
+          });
+        } else {
+          // @todo Make file
+
+        }
+
+
+
+      }
+    }
+  }
+
+
+
+  }
+  exports.handler = handler;
