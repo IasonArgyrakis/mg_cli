@@ -7,7 +7,7 @@ exports.builder = {
   }
 }
 
-const greenboard = require('../greenboard.js');
+const greenboard = require('../utils/greenboard.js');
 const fs = require('fs');
 const path = require('path');
 const { check } = require('yargs');
@@ -51,6 +51,7 @@ handler = function (argv) {
 
     //console.log(__dirname);
     const dree = require('dree');
+    //make this into function
     dree.scanAsync(__dirname + '/Templates/Plugin/MG_CLI/plug-in-name/')
       .then(function (tree) {
 
@@ -92,21 +93,29 @@ handler = function (argv) {
       // })
     }
 
+    //@todo Add this also as a command cfrp
     
+    /* Make a file on a specific Path
+     * 
+     * @param {*} RelativePath 
+     */
     function createFileFromRelativePath(RelativePath) {
 
       RelativePath_Arr = RelativePath.split("/");
-      console.log(RelativePath_Arr);
+      console.log(RelativePath_Arr)
       //Define the path to berelative from where the cli was called  `process.env.PWD`
       let newDirPath = './'
       for (let i = 0; i < RelativePath_Arr.length; i++) {
-        newDirPath = RelativePath_Arr[i] + "/"
+       
+          //if it is a folder 
         if (i !== RelativePath_Arr.length - 1) {
-          fs.mkdir(path.join(process.env.PWD,newDirPath), (err) => {
+          newDirPath += RelativePath_Arr[i] + "/"
+         
+          fs.mkdir(path.join(process.env.PWD,newDirPath),{ recursive: true }, (err) => {
             if (err && err.errno==-17) {
-              return console.error("Skiped Folder Exists");
+              return console.error("Skiped Folder Exists..."+newDirPath);
             }
-            console.log('made ' +newDirPath );
+            console.log('mkdir "' +newDirPath+'"' );
           });
         } else {
           // @todo Make file
