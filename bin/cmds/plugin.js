@@ -102,9 +102,9 @@ handler = function (argv) {
       for (let i = 0; i < RelativePath_Arr.length; i++) {
         newDirPath = RelativePath_Arr[i] + "/"
         if (i !== RelativePath_Arr.length - 1) {
-          fs.mkdir(path.join(process.env.PWD,newDirPath), { recursive: true }, (err) => {
-            if (err) {
-              return console.error(err);
+          fs.mkdir(path.join(process.env.PWD,newDirPath), (err) => {
+            if (err && err.errno==-17) {
+              return console.error("Skiped Folder Exists");
             }
             console.log('made ' +newDirPath );
           });
