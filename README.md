@@ -89,7 +89,8 @@ nonoce-js (make a js pool of scripts) for head | body | blocks etc using observe
 
 ez-ass-pie dynamiclaly build and add layout `xml` `phtml` for pages such as Index | category | product | custom-feature
 * custom-feature placeholder for custom ui stuff
-   example  [Azera](https://azera.smart-digital.gr/?templatehints=magento) `/var/www/vhosts/smart-digital.gr/azera.smart-digital.gr/app/design/frontend/DigitalUp/diogenes/DigitalUp_Diogenes/templates/html/homepage/sections/services.phtml`
+   example  [Azera](https://azera.smart-digital.gr/?templatehints=magento)
+   `/var/www/vhosts/smart-digital.gr/azera.smart-digital.gr/app/design/frontend/DigitalUp/diogenes/DigitalUp_Diogenes/templates/html/homepage/sections/services.phtml`
 
 
 
