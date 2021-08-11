@@ -1,6 +1,14 @@
 # Mg_cli
 With this CLI tool you can make modules dynamically for the Magento frame-work faster better cleaner 
 
+## Install
+
+ 1. `git clone https://github.com/IasonArgyrakis/mg_cli.git`
+ 2. `cd mg_cli` 
+ 3. `npm install -g . `
+ 
+ oneliner: `git clone https://github.com/IasonArgyrakis/mg_cli.git && cd mg_cl && npm install -g . `
+
 
 ## The Vison
 
