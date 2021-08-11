@@ -75,7 +75,7 @@ handler = function (argv) {
         recurisiveChildren(children[i])
       }
     }
-    else {
+    else { 
       createFileFromRelativePath(obj.relativePath)
 
       // fs.readFile(obj.path, 'utf8' , (err, data) => {
