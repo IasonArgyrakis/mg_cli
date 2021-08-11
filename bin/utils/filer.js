@@ -2,20 +2,17 @@ const dree = require('dree');
 
 /**
  * 
- * @param {string} path of a folder
+ * @param {*} path of a folder
  * 
- * @returns [] an array of the 1st childer
+ * @returns {} an array of the 1st childer ./path [ dir1 , dir2] 
  */
 const utils_ls = (path) => {
-  let contents
-  dree.scanAsync().then(function (tree) {
 
-    contents = tree.children;
+  
+  let tree = dree.scan(path);
+  //console.log(tree);
+  return tree.children;
 
-
-
-  });
-  return contents
 }
 /**
  * 
@@ -25,13 +22,24 @@ const utils_ls = (path) => {
  */
 function recurisive_dis(obj,callback) {
   //if directory keep digiing
+  console.log("got path "+obj.path)
+
   if (obj.type === "directory") {
+    //console.log("entering path "+obj.name)
+   
+   if(obj.children !== undefined){
     let children = obj.children;
     for (let i = 0; i < children.length; i++) {
-
-      rrecurisive_dis(children[i])
+      
+      recurisive_dis(children[i])
     }
+  }else{
+    //console.log("ded end")
   }
+}else{
+console.log("im a file ")
+  }
+  
 }
 function recurisive_files(obj,callback) {
   //if directory keep digiing
@@ -59,14 +67,23 @@ function createFileFromRelativePath(RelativePath) {
     //if it is a folder 
     if (i !== RelativePath_Arr.length - 1) {
       newDirPath += RelativePath_Arr[i] + "/"
-      fs
+     
+      fs.mkdir(path.join(process.env.PWD,newDirPath),{ recursive: true }, (err) => {
+        if (err && err.errno==-17) {
+          return console.error("Skiped Folder Exists..."+newDirPath);
+        }
+        console.log('mkdir "' +newDirPath+'"' );
+      });
+    } else {
+      // @todo Make file
+
     }
 
 
   }
 }
 
-exports.utils_ls=utils_ls;
+exports.getfolderDirectories=utils_ls;
 
 exports.recurisive_dis=recurisive_dis;
 
