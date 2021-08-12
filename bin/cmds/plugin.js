@@ -1,7 +1,7 @@
 exports.command = 'g []' //this is the prompt help `[name]` defines the argv.na property
 
 exports.desc = 'Create an new plugin'
-
+exports.help = 'Create an new plugin'
 exports.builder = {
   no_config: {
     default: true
@@ -50,7 +50,7 @@ handler = function (argv) {
   //utils_filer.createFileFromRelativePath('Block/Adminhtml/Items/Edit/Form.php');
   for (let i = 0; i < list.length; i++) {
     let type = list[i].split("/")
-    console.log(type[i])
+    console.log(type[0])
     if (argv.no_config) {
 
 
