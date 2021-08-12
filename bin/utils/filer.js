@@ -1,4 +1,4 @@
-const { Console } = require('console');
+
 const dree = require('dree');
 const fs = require('fs');
 const path = require('path')

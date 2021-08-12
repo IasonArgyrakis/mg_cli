@@ -1,3 +1,4 @@
+
 const chalk = require("chalk");
 const boxen = require("boxen");
 const boxenOptions = {
@@ -18,13 +19,21 @@ const boxenOptions_red = {
 
 const write=(text)=> {
     let greeting = chalk.white.bold(text);
-    return boxen(greeting, boxenOptions)
+    //shout(greeting);
+    return boxen(shout(greeting), boxenOptions)
 }
 
 const error=(text)=> {
     let greeting = chalk.white.bold(text);
     return boxen(greeting, boxenOptions_red)
 }
+
+function shout(theText){
+    console.log(theText)
+    theText = theText+"-harika pou se eida"
+   return theText
+}
+
 
 
 exports.write = write

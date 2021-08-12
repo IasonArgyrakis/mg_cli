@@ -23,6 +23,7 @@
     "boxen": "4.0",
     "chalk": "2.4",
     "dree": "^2.8.3",
+    "filerabit": "github:IasonArgyrakis/fileRabit",
     "glob": "^7.1.7",
     "handlebars": "^4.7.7",
     "yargs": "13.2"

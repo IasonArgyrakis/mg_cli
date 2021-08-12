@@ -23,8 +23,11 @@ const { Console } = require('console');
 
 
 handler = function (argv) {
+ 
+ console.log(greenboard.write("Kala na peraseis"));
 
-  console.log(argv);
+ 
+ console.log(argv);
 
   // if (argv.plugName === '') {
 
