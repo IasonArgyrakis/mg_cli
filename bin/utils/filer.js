@@ -1,4 +1,7 @@
+const { Console } = require('console');
 const dree = require('dree');
+const fs = require('fs');
+const path = require('path')
 
 /**
  * 
@@ -8,11 +11,15 @@ const dree = require('dree');
  */
 const utils_ls = (path) => {
 
-  
+
   let tree = dree.scan(path);
   //console.log(tree);
   return tree.children;
 
+}
+var arry = []
+function makeArray(path) {
+  arry.push(path)
 }
 /**
  * 
@@ -20,74 +27,82 @@ const utils_ls = (path) => {
  * 
  *  
  */
-function recurisive_dis(obj,callback) {
-  //if directory keep digiing
-  console.log("got path "+obj.path)
 
+function recurisive_dis(obj, callback) {
+  //if directory keep digiing
+
+  //console.log("called ")
   if (obj.type === "directory") {
-    //console.log("entering path "+obj.name)
-   
-   if(obj.children !== undefined){
-    let children = obj.children;
-    for (let i = 0; i < children.length; i++) {
-      
-      recurisive_dis(children[i])
+
+
+    if (obj.children !== undefined) {
+      let children = obj.children;
+      for (let i = 0; i < children.length; i++) {
+
+        recurisive_dis(children[i])
+      }
     }
-  }else{
-    //console.log("ded end")
-  }
-}else{
-console.log("im a file ")
-  }
-  
-}
-function recurisive_files(obj,callback) {
-  //if directory keep digiing
-  if (obj.type === "directory") {
-    let children = obj.children;
-    for (let i = 0; i < children.length; i++) {
-
-      recurisive_files(children[i])
+    else {
+      //console.log("ded end")
     }
   }
-  else{obj.relativePath}
+  else {
+    //console.log("file for path " + obj.path);
+    makeArray(obj.relativePath)
+
+  }
+
+
 }
+
 /**
  * 
  * @param {string} RelativePath 
  */
-function createFileFromRelativePath(RelativePath) {
+function createFileFromRelativePath(RelativePath,cmd_location) {
   //Spit what by '/' what are folders and what are files
   // the last element is the file  
   RelativePath_Arr = RelativePath.split("/");
-  //Define the path to berelative from where the function was called
+  console.log("...")
+  //console.log(RelativePath_Arr)
+
   let newDirPath = './'
   //itterate throught the input 
   for (let i = 0; i < RelativePath_Arr.length; i++) {
+   console.log(RelativePath_Arr[i]);
     //if it is a folder 
-    if (i !== RelativePath_Arr.length - 1) {
+    if (i < RelativePath_Arr.length-1) {
+      
       newDirPath += RelativePath_Arr[i] + "/"
-     
-      fs.mkdir(path.join(process.env.PWD,newDirPath),{ recursive: true }, (err) => {
-        if (err && err.errno==-17) {
-          return console.error("Skiped Folder Exists..."+newDirPath);
+      console.log('mkdir : "' + newDirPath + '"');
+
+      fs.mkdir(path.join(process.env.PWD, newDirPath), { recursive: true }, (err) => {
+        if (err && err.errno == -17) {
+          return console.error("Skiped Folder Exists..." + newDirPath);
         }
-        console.log('mkdir "' +newDirPath+'"' );
+        
       });
-    } else {
-      // @todo Make file
-
+    }else{
+      newDirPath += RelativePath_Arr[i]
+      console.log('Saved file under:')
+      console.log(newDirPath)
+      let TempalteLocation = newDirPath.substring(1, newDirPath.length);
+      let tempalteFileContent = fs.readFileSync(path.resolve(cmd_location+"/Templates/Plugin/MG_CLI/plug-in-name/"+TempalteLocation)).toString('utf8')
+      fs.writeFileSync(newDirPath, tempalteFileContent, function (err) {
+        if (err) throw err;
+        console.log('Done');
+      });
     }
-
-
+    
   }
 }
 
-exports.getfolderDirectories=utils_ls;
+exports.getfolderDirectories = utils_ls;
 
-exports.recurisive_dis=recurisive_dis;
+exports.recurisive_dis = recurisive_dis;
 
-exports.recurisive_files=recurisive_files;
 
-exports.createFileFromRelativePath=createFileFromRelativePath;
+exports.createFileFromRelativePath = createFileFromRelativePath;
+
+exports.getTempalateFileList = arry
 
