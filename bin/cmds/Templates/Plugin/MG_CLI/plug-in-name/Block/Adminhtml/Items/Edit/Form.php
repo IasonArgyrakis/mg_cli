@@ -2,7 +2,7 @@
 /**
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
-namespace {{VendorName}}\{{pluginName}}\Block\Adminhtml\Items\Edit;
+namespace {{VendorName}}\\{{pluginName}}\Block\Adminhtml\Items\Edit;
 
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
 {

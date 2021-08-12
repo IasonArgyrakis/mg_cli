@@ -57,9 +57,9 @@ Directives : placeholder
 
 @toDo : - [x]  Parse Complex filenames
 
-@toDo : - [ ]  make or copy Complex filenames to pwd dir
+@toDo : - [x]  make or copy Complex filenames to pwd dir
 
-@toDo : - [ ]  Make ProtoTemplates
+@toDo : - [x]  Make ProtoTemplates
 
 @toDo : -[ ]  Make ProtoTempaltes for Vendor_Overides Note: fallbacks 
 
