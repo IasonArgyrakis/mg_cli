@@ -39,48 +39,22 @@ handler = function (argv) {
   //let pwd=process.env.PWD.toString();
 
 
-  let list=fileRabit.exploreNest(__dirname + "/Templates/Plugin/MG_CLI/plug-in-name/");
+  //let file_list=fileRabit.exploreNest(__dirname + "/Templates/Plugin/MG_CLI/plug-in-name/");
 
 
-  console.log(list);
+  //console.log(list);
+  let vars={VendorName:"TestV",pluginName:"TestP"}
 
 
-  //fileRabit.createFileFromRelativePath('Block/Adminhtml/Items/Edit/Form.php');
-  for (let i = 0; i < list.length; i++) {
-    let type = list[i].split("/")
-    console.log(type[0])
-    if (argv.no_config) {
-
-
-
-      if (type[0]=="Block" && argv.block != undefined) {
-        fileRabit.createFileFromRelativePath(list[i], __dirname);
-      }
-
-
-      if (type[0]=="Model" && argv.model != undefined) {
-        fileRabit.createFileFromRelativePath(list[i], __dirname);
-      }
-    }
+  fileRabit.createFileFromRelativePath('Block/Adminhtml/Items/Edit/Form.php',vars,__dirname);
+  
 
 
   
 }
-    
-    
 
 
-    
-
-     
-    
 
 
   
-
- 
-
-
-
-  }
 exports.handler = handler;
