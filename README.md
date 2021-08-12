@@ -33,6 +33,8 @@ https://developer.okta.com/blog/2019/06/18/command-line-app-with-nodejs
 
 https://medium.com/@pongsatt/how-to-build-your-own-project-templates-using-node-cli-c976d3109129
 
+node_modules/.bin/semver
+
 
 ---
 ## Commands
