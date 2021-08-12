@@ -1,16 +1,14 @@
 exports.command = 'g []' //this is the prompt help `[name]` defines the argv.na property
 
 exports.desc = 'Create an new plugin'
+
 exports.builder = {
   no_config: {
     default: true
   },
-  block:{
-    default: false
-  },
-  module:{
-    default: false
-  }
+  block:{},
+  model:{}
+  
 }
 
 const greenboard = require('../utils/greenboard.js');
@@ -25,6 +23,7 @@ const { Console } = require('console');
 
 
 handler = function (argv) {
+  
   console.log(argv);
 
   // if (argv.plugName === '') {
@@ -50,9 +49,24 @@ handler = function (argv) {
     
     //utils_filer.createFileFromRelativePath('Block/Adminhtml/Items/Edit/Form.php');
     for (let i = 0; i < list.length; i++) {
+      console.log(list[i])
     if(argv.no_config){
-      utils_filer.createFileFromRelativePath(list[i],__dirname);
-    } 
+      if(argv.block!=undefined){
+        let type=list[i].split("/");
+        switch (type[0]) {
+          case "Block":
+            utils_filer.createFileFromRelativePath(list[i],__dirname);
+            break;
+        
+          case "Model":
+            utils_filer.createFileFromRelativePath(list[i],__dirname);
+            break;
+        }
+        
+      }else{
+        utils_filer.createFileFromRelativePath(list[i],__dirname);
+      }
+    }
     }
     
 
