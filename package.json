@@ -26,6 +26,7 @@
     "filerabit": "github:IasonArgyrakis/fileRabit",
     "glob": "^7.1.7",
     "handlebars": "^4.7.7",
+    "npm-check-updates": "^11.8.3",
     "yargs": "13.2"
   },
   "devDependencies": {}

@@ -11,20 +11,19 @@ exports.builder = {
 
 }
 
-const greenboard = require('../utils/greenboard.js');
+
 
 const path = require('path');
+const fileRabit= require("filerabit")
 const { check, config } = require('yargs');
-
-const utils_filer = require('../utils/filer.js');
-const { Console } = require('console');
+const { Console, dir } = require('console');
 
 
 
 
 handler = function (argv) {
  
- console.log(greenboard.write("Kala na peraseis"));
+ 
 
  
  console.log(argv);
@@ -40,17 +39,13 @@ handler = function (argv) {
   //let pwd=process.env.PWD.toString();
 
 
-  let dirs = utils_filer.getfolderDirectories(__dirname + "/Templates/Plugin/MG_CLI/plug-in-name/");
-
-  for (let i = 0; i < dirs.length; i++) {
-    utils_filer.recurisive_dis(dirs[i]);
-  }
-
-  //console.log(utils_filer.getTempalateFileList);
-  let list = utils_filer.getTempalateFileList
+  let list=fileRabit.exploreNest(__dirname + "/Templates/Plugin/MG_CLI/plug-in-name/");
 
 
-  //utils_filer.createFileFromRelativePath('Block/Adminhtml/Items/Edit/Form.php');
+  console.log(list);
+
+
+  //fileRabit.createFileFromRelativePath('Block/Adminhtml/Items/Edit/Form.php');
   for (let i = 0; i < list.length; i++) {
     let type = list[i].split("/")
     console.log(type[0])
@@ -59,12 +54,12 @@ handler = function (argv) {
 
 
       if (type[0]=="Block" && argv.block != undefined) {
-        utils_filer.createFileFromRelativePath(list[i], __dirname);
+        fileRabit.createFileFromRelativePath(list[i], __dirname);
       }
 
 
       if (type[0]=="Model" && argv.model != undefined) {
-        utils_filer.createFileFromRelativePath(list[i], __dirname);
+        fileRabit.createFileFromRelativePath(list[i], __dirname);
       }
     }
 
