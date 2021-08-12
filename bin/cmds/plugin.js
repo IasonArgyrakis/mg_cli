@@ -6,9 +6,9 @@ exports.builder = {
   no_config: {
     default: true
   },
-  block:{},
-  model:{}
-  
+  block: {},
+  model: {}
+
 }
 
 const greenboard = require('../utils/greenboard.js');
@@ -16,14 +16,14 @@ const greenboard = require('../utils/greenboard.js');
 const path = require('path');
 const { check, config } = require('yargs');
 
-const utils_filer=require('../utils/filer.js');
+const utils_filer = require('../utils/filer.js');
 const { Console } = require('console');
 
 
 
 
 handler = function (argv) {
-  
+
   console.log(argv);
 
   // if (argv.plugName === '') {
@@ -32,42 +32,43 @@ handler = function (argv) {
   // }
   // else {
 
-    //console.log(greenboard.write(argv.plugName))
-    
-    //let pwd=process.env.PWD.toString();
-   
+  //console.log(greenboard.write(argv.plugName))
 
-    let dirs=utils_filer.getfolderDirectories(__dirname+"/Templates/Plugin/MG_CLI/plug-in-name/");
-    
-    for (let i = 0; i < dirs.length; i++) {
-     utils_filer.recurisive_dis(dirs[i]);
-    }
-    
-    //console.log(utils_filer.getTempalateFileList);
-    let list=utils_filer.getTempalateFileList
-    
-    
-    //utils_filer.createFileFromRelativePath('Block/Adminhtml/Items/Edit/Form.php');
-    for (let i = 0; i < list.length; i++) {
-      console.log(list[i])
-    if(argv.no_config){
-      if(argv.block!=undefined){
-        let type=list[i].split("/");
-        switch (type[0]) {
-          case "Block":
-            utils_filer.createFileFromRelativePath(list[i],__dirname);
-            break;
-        
-          case "Model":
-            utils_filer.createFileFromRelativePath(list[i],__dirname);
-            break;
-        }
-        
-      }else{
-        utils_filer.createFileFromRelativePath(list[i],__dirname);
+  //let pwd=process.env.PWD.toString();
+
+
+  let dirs = utils_filer.getfolderDirectories(__dirname + "/Templates/Plugin/MG_CLI/plug-in-name/");
+
+  for (let i = 0; i < dirs.length; i++) {
+    utils_filer.recurisive_dis(dirs[i]);
+  }
+
+  //console.log(utils_filer.getTempalateFileList);
+  let list = utils_filer.getTempalateFileList
+
+
+  //utils_filer.createFileFromRelativePath('Block/Adminhtml/Items/Edit/Form.php');
+  for (let i = 0; i < list.length; i++) {
+    let type = list[i].split("/")
+    console.log(type[i])
+    if (argv.no_config) {
+
+
+
+      if (type[0]=="Block" && argv.block != undefined) {
+        utils_filer.createFileFromRelativePath(list[i], __dirname);
+      }
+
+
+      if (type[0]=="Model" && argv.model != undefined) {
+        utils_filer.createFileFromRelativePath(list[i], __dirname);
       }
     }
-    }
+
+
+  
+}
+    
     
 
 
@@ -84,4 +85,4 @@ handler = function (argv) {
 
 
   }
-  exports.handler = handler;
+exports.handler = handler;
