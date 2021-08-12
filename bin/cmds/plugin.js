@@ -52,27 +52,7 @@ handler = function (argv) {
     for (let i = 0; i < list.length; i++) {
     if(argv.no_config){
       utils_filer.createFileFromRelativePath(list[i],__dirname);
-    }else if(argv.b || argv.m){
-    
-      let details=list[i].split("/")
-      switch (details[0]) {
-        
-        case argv.b:
-          console.log(details[0])
-          utils_filer.createFileFromRelativePath(list[i],__dirname);
-          break;
-        case argv.m:
-          console.log(details[0])
-          
-          break;
-      
-        default:
-          
-          break;
-      }
-
-      
-     }
+    }
     }
     
 
