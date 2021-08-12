@@ -43,15 +43,22 @@ handler = function (argv) {
 
 
   //console.log(list);
-  let vars={VendorName:"TestV",pluginName:"TestP"}
-
-
-  fileRabit.createFileFromRelativePath('Block/Adminhtml/Items/Edit/Form.php',vars,__dirname);
+  
+  
+  let vars={VendorName:"BigBrownFox",pluginName:"undertheBridge"};
+  //let vars={VendorName:"FireFox",pluginName:"is on Fire"};
+  //let vars={VendorName:"Chorme",pluginName:"is the surfer"};
   
 
 
+
+
+ fileRabit.createFileFromRelativePath('Block/Adminhtml/Items/Edit/Form.php',vars,__dirname)
   
 }
+
+  
+
 
 
 
