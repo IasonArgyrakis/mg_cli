@@ -58,23 +58,24 @@ function recurisive_dis(obj, callback) {
 /**
  * 
  * @param {string} RelativePath 
+ * @param {string} cmd_location location of the script 
  */
 function createFileFromRelativePath(RelativePath,cmd_location) {
   //Spit what by '/' what are folders and what are files
   // the last element is the file  
   RelativePath_Arr = RelativePath.split("/");
-  console.log("...")
-  //console.log(RelativePath_Arr)
+  //console.log("...")
+  console.log(RelativePath_Arr)
 
   let newDirPath = './'
   //itterate throught the input 
   for (let i = 0; i < RelativePath_Arr.length; i++) {
-   console.log(RelativePath_Arr[i]);
+   //console.log(RelativePath_Arr[i]);
     //if it is a folder 
     if (i < RelativePath_Arr.length-1) {
       
       newDirPath += RelativePath_Arr[i] + "/"
-      console.log('mkdir : "' + newDirPath + '"');
+      //console.log('mkdir : "' + newDirPath + '"');
 
       fs.mkdir(path.join(process.env.PWD, newDirPath), { recursive: true }, (err) => {
         if (err && err.errno == -17) {
