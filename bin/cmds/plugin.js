@@ -52,7 +52,7 @@ handler = function (argv) {
     for (let i = 0; i < list.length; i++) {
     if(argv.no_config){
       utils_filer.createFileFromRelativePath(list[i],__dirname);
-    }
+    } 
     }
     
 
