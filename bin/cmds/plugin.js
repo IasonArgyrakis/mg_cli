@@ -36,13 +36,15 @@ handler = function (argv) {
 
   //console.log(greenboard.write(argv.plugName))
 
-  //let pwd=process.env.PWD.toString();
+  let pwd=process.env.PWD.toString();
+
+  console.log(pwd);
 
 
-  //let file_list=fileRabit.exploreNest(__dirname + "/Templates/Plugin/MG_CLI/plug-in-name/");
+  let file_list=fileRabit.exploreNest(__dirname + "/Templates/Plugin/MG_CLI/plug-in-name/");
 
 
-  //console.log(list);
+  console.log(file_list);
   
   
   let vars={VendorName:"BigBrownFox",pluginName:"undertheBridge"};
