@@ -82,7 +82,9 @@ Milestone One_point_five -[ ]
 
 @toDo : -[ ]   add the mg_generated_module
 
-@toDo : -[ ]   integration with directives for subfolders. Must be multiple directives and subfolders as well 
+@toDo : -[ ]   integration with directives for subfolders of each class created. Must be multiple directives and subfolders as well
+
+@toDo : -[ ]   camel case validation for class names passed as directives
 
 
 ---
