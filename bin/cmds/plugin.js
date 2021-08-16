@@ -6,7 +6,9 @@ exports.builder = {
   no_config: {
     default: true
   },
-  block: {},
+  block: {
+    default: false
+  },
   model: {}
 
 }
@@ -28,10 +30,11 @@ handler = function (argv) {
  
  console.log(argv);
 
-  // if (argv.plugName === '') {
+  if (argv.no_config) {
 
-  //   console.log('Please provide a name for the Plugin (Vendor Defaults to MG_CLI)')
-  // }
+    console.log('Please provide a name for the Plugin (Vendor Defaults to MG_CLI)')
+    process.exit(1)
+  }
   // else {
 
   //console.log(greenboard.write(argv.plugName))
@@ -47,7 +50,7 @@ handler = function (argv) {
   console.log(file_list);
   
   
-  let vars={VendorName:"BigBrownFox",pluginName:"undertheBridge"};
+  let vars={VendorName:"george",pluginName:"efstratiou"};
   //let vars={VendorName:"FireFox",pluginName:"is on Fire"};
   //let vars={VendorName:"Chorme",pluginName:"is the surfer"};
   
