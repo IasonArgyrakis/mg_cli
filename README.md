@@ -82,6 +82,9 @@ Milestone One_point_five -[ ]
 
 @toDo : -[ ]   add the mg_generated_module
 
+@toDo : -[ ]   integration with directives for subfolders. Must be multiple directives and subfolders as well 
+
+
 ---
 
 ##  Features | Ideas 
