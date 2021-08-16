@@ -19,9 +19,20 @@ const path = require('path');
 const fileRabit= require("filerabit")
 const { check, config } = require('yargs');
 const { Console, dir } = require('console');
+const readline = require('readline');
 
 
+function askQuestion(query) {
+  const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+  });
 
+  return new Promise(resolve => rl.question(query, ans => {
+      rl.close();
+      resolve(ans);
+  }))
+}
 
 handler = function (argv) {
  
@@ -29,6 +40,9 @@ handler = function (argv) {
 
  
  console.log(argv);
+  if(argv.block!==true){
+    no_config=false
+  }
 
   if (argv.no_config) {
 
@@ -40,6 +54,7 @@ handler = function (argv) {
   //console.log(greenboard.write(argv.plugName))
 
   let pwd=process.env.PWD.toString();
+  const ans = await askQuestion("Enter block ");
 
   console.log(pwd);
 
@@ -50,7 +65,7 @@ handler = function (argv) {
   console.log(file_list);
   
   
-  let vars={VendorName:"george",pluginName:"efstratiou"};
+  let vars={VendorName:"MG_CLI",pluginName:"json"};
   //let vars={VendorName:"FireFox",pluginName:"is on Fire"};
   //let vars={VendorName:"Chorme",pluginName:"is the surfer"};
   
