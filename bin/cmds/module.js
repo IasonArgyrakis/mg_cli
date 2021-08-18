@@ -1,7 +1,7 @@
 exports.command = 'g []' //this is the prompt help `[name]` defines the argv.na property
 
-exports.desc = ''
-exports.help = 'Use `mg g --b '
+exports.desc = 'https://github.com/IasonArgyrakis/mg_cli/blob/main/README.md#quickstart'
+exports.help = 'https://github.com/IasonArgyrakis/mg_cli/blob/main/README.md#quickstart'
 exports.builder = {
   // no_config: {
   //   default: true
