@@ -18,6 +18,7 @@ exports.builder = {
 const fileRabit = require("filerabit")
 let pwd = process.env.PWD.toString();
 const chalk = require('chalk');
+const { Console } = require("console")
 
 
 
@@ -39,8 +40,17 @@ handler = function (argv) {
   }
 
   var vars = { VendorName: "MG_CLI", pluginName: "json", blockextends: undefined, blockclass: undefined };
- // console.log(vars)
+  // console.log(vars)
   //Make vendorname Ca
+
+if(argv.register){
+  console.log("Registering Module as:");
+  console.log("Vendor:",vars.VendorName);
+  console.log("Module:",vars.pluginName);
+  RegisterModule(vars)
+  process.exit(1)
+
+}
 
   switch (typeof argv.e) {
     case "undefined":
@@ -181,10 +191,12 @@ function MakeModel(vars) {
 }
 function RegisterModule(vars) {
 
-  let file_list = fileRabit.exploreNest(__dirname + "/Templates/Model-Cli/");
+  let file_list = fileRabit.exploreNest(__dirname + "/Templates/Composer-Cli/");
+  console.log("--");
+  console.log(file_list);
   for (let index = 0; index < file_list.length; index++) {
     let element = file_list[index];
-    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Model-Cli/")
+    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Composer-Cli/")
 
   }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 {{VendorName}}. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="{{VendorName}}::base" title="{{VendorName}}" module="{{VendorName}}_{{pluginName}}" sortOrder="90" resource="{{VendorName}}_{{pluginName}}::sample"/>
+        <add id="{{VendorName}}_{{pluginName}}::{{pluginName}}" title="{{toLowerCase blockclass}}" module="{{VendorName}}_{{pluginName}}" sortOrder="10" parent="{{VendorName}}::base" action="{{VendorName}}_{{pluginName}}/{{toLowerCase blockclass}}/" resource="{{VendorName}}_{{pluginName}}::{{toLowerCase blockclass}}"/>
+    </menu>
+</config>
