@@ -18,7 +18,7 @@ exports.builder = {
 const fileRabit = require("filerabit")
 let pwd = process.env.PWD.toString();
 const chalk = require('chalk');
-const { Console } = require("console")
+
 
 
 
@@ -44,9 +44,9 @@ handler = function (argv) {
   //Make vendorname Ca
 
 if(argv.register){
-  console.log("Registering Module as:");
-  console.log("Vendor:",vars.VendorName);
-  console.log("Module:",vars.pluginName);
+  console.log(chalk.yellow("Registering Module as:"));
+  console.log(chalk.yellow("       Vendor:",vars.VendorName));
+  console.log(chalk.yellow("       Module:",vars.pluginName));
   RegisterModule(vars)
   process.exit(1)
 
@@ -152,17 +152,18 @@ if(argv.register){
 
 
 function MakeBlocks(vars) {
-  console.log(vars)
-
+  console.log(chalk.yellow("Making Blocks/"))
+  
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Block-Cli/");
   for (let index = 0; index < file_list.length; index++) {
     let element = file_list[index];
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Block-Cli/")
 
   }
+ 
 }
 function MakeControler(vars) {
-  console.log(vars)
+  console.log(chalk.yellow("Making Controler/"))
 
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Controler-Cli/");
   for (let index = 0; index < file_list.length; index++) {
@@ -170,8 +171,10 @@ function MakeControler(vars) {
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Controler-Cli/")
 
   }
+  
 }
 function MakeEtc(vars) {
+  console.log(chalk.yellow("Making Etc/"))
 
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Etc-Cli/");
   for (let index = 0; index < file_list.length; index++) {
@@ -179,21 +182,21 @@ function MakeEtc(vars) {
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Etc-Cli/")
 
   }
+ 
 }
 function MakeModel(vars) {
-
+  console.log(chalk.yellow("Making Model/"))
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Model-Cli/");
   for (let index = 0; index < file_list.length; index++) {
     let element = file_list[index];
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Model-Cli/")
 
   }
+  
 }
 function RegisterModule(vars) {
 
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Composer-Cli/");
-  console.log("--");
-  console.log(file_list);
   for (let index = 0; index < file_list.length; index++) {
     let element = file_list[index];
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Composer-Cli/")
