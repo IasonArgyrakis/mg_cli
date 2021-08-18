@@ -1,13 +1,16 @@
 # Mg_cli
 With this CLI tool you can make modules dynamically for the Magento frame-work faster better cleaner 
 
+Ditch the online module makers!
+Have one built in in your cli
+
 ---
 # Table of Contents
 1. [Install](#install)
-2. [The Vison](#the-vision)
-3. [Commands](#commands)
-4. [ToDo](#todo)
-5. [features ideas](#features--ideas)
+2. [How to Use](#quickstart)
+4. [Commands](#commands)
+5. [ToDo](#todo)
+6. [features ideas](#features--ideas)
 
 ## Install
 
@@ -17,14 +20,54 @@ With this CLI tool you can make modules dynamically for the Magento frame-work f
  3. `npm install -g . ` to install the current dir as a library 
  
  One Line Install: `git clone https://github.com/IasonArgyrakis/mg_cli.git && cd mg_cli && npm install -g . `
+ 
 
 
-## The Vison
+## Quickstart
 
-Ditch the online module makers!
+   `mg g`
+--
 
-Have one built in in your cli
+`--register` to make `registration.php` & `composer.json`
 
+`--b` for Block
+
+`--ctr` for Controler
+
+`--mdl` for Model
+
+## Guide
+
+
+`mg g --b myblockname` 
+
+To make a `Block` folder with a `myblockname.php` inside
+
+---
+`mg g --b myotherblockname --e`
+
+To make a `Block` folder with a `myotherblockname.php` that extends `\Magento\Backend\Block\Widget\Grid\Container`
+
+---
+
+`mg g --b myotherblockname --e yourStringHere`
+
+To make a `Block` folder with a `myotherblockname.php` that extends `yourStringHere` 
+NOTE: the terminal does not recognise backslashes !
+
+---
+
+`mg g --ctr myotherblockname `
+
+To make a `Controler` folder with a `myotherblockname.php`  
+NOTE: the terminal does not recognise backslashes !
+
+---
+
+`mg g --mdl myotherblockname `
+
+To make a `Model` folder with a `myotherblockname.php`  
+NOTE: the terminal does not recognise backslashes !
 
 
 ---
