@@ -109,17 +109,17 @@ Directives : placeholder
 
 - [x]  Make ProtoTemplates
 
--[ ]  Make ProtoTempaltes for Vendor_Overides Note: fallbacks 
+- [ ]  Make ProtoTempaltes for Vendor_Overides Note: fallbacks 
 
--[ ]Milestone One
+- [x]  ## Milestone One
 
--[x]  Make CLI guide
+- [x]  Make CLI guide
 
-Milestone One_point_TwentyFive -[ ] 
+- [x]  Milestone One_point_TwentyFive
 
 - [x]  Intergrate ProtoTempaltes variables
 
-Milestone One_point_five -[ ] 
+- [ ]  Milestone One_point_five -[ ] 
 
 - [ ]  Intergrate ProtoTempaltes variables for Vendor_Overides
 
