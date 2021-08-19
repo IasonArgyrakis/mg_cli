@@ -111,15 +111,15 @@ Directives : placeholder
 
 - [ ]  Make ProtoTempaltes for Vendor_Overides Note: fallbacks 
 
-- [x]  ## Milestone One
+- [x]  Milestone 1️⃣
 
 - [x]  Make CLI guide
 
-- [x]  Milestone One_point_TwentyFive
+- [x]  Milestone 1️⃣.25
 
 - [x]  Intergrate ProtoTempaltes variables
 
-- [ ]  Milestone One_point_five -[ ] 
+- [ ]  Milestone 1️⃣.5
 
 - [ ]  Intergrate ProtoTempaltes variables for Vendor_Overides
 
@@ -129,7 +129,7 @@ Directives : placeholder
 
 - [ ]   integration with directives for subfolders of each class created. Must be multiple directives and subfolders as well
 
-- []   camel case validation for class names passed as directives
+- [x]   camel case validation for class names passed as directives
 
 
 ---
