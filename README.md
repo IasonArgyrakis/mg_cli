@@ -101,35 +101,35 @@ Directives : placeholder
 
 ## ToDo 
 
-@toDo : - [x]  Make Hello Wolrd  
+[x]  Make Hello Wolrd  
 
-@toDo : - [x]  Parse Complex filenames
+[x]  Parse Complex filenames
 
-@toDo : - [x]  make or copy Complex filenames to pwd dir
+[x]  make or copy Complex filenames to pwd dir
 
-@toDo : - [x]  Make ProtoTemplates
+- [x]  Make ProtoTemplates
 
-@toDo : -[ ]  Make ProtoTempaltes for Vendor_Overides Note: fallbacks 
+-[ ]  Make ProtoTempaltes for Vendor_Overides Note: fallbacks 
 
 Milestone One -[ ] 
 
-@toDo : -[ ]  Make CLI guide
+-[ ]  Make CLI guide
 
 Milestone One_point_TwentyFive -[ ] 
 
-@toDo : -[ ]  Intergrate ProtoTempaltes variables
+ -[ ]  Intergrate ProtoTempaltes variables
 
 Milestone One_point_five -[ ] 
 
-@toDo : -[ ]  Intergrate ProtoTempaltes variables for Vendor_Overides
+-[ ]  Intergrate ProtoTempaltes variables for Vendor_Overides
 
-@toDo : -[ ]  XML Directives (add the mg_generated_module to a view  index | static-page | product-category 
+-[ ]  XML Directives (add the mg_generated_module to a view  index | static-page | product-category 
 
-@toDo : -[ ]   add the mg_generated_module
+-[ ]   add the mg_generated_module
 
-@toDo : -[ ]   integration with directives for subfolders of each class created. Must be multiple directives and subfolders as well
+-[ ]   integration with directives for subfolders of each class created. Must be multiple directives and subfolders as well
 
-@toDo : -[ ]   camel case validation for class names passed as directives
+-[ ]   camel case validation for class names passed as directives
 
 
 ---
