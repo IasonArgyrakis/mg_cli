@@ -2,7 +2,7 @@
 /**
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
-namespace {{VendorName}}\{{pluginName}}\Block\Adminhtml\Items;
+namespace {{VendorName}}\{{moduleName}}\Block\Adminhtml\Items;
 
 class Edit extends \Magento\Backend\Block\Widget\Form\Container
 {
@@ -38,7 +38,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     {
         $this->_objectId = 'id';
         $this->_controller = 'adminhtml_items';
-        $this->_blockGroup = '{{VendorName}}_{{pluginName}}';
+        $this->_blockGroup = '{{VendorName}}_{{moduleName}}';
 
         parent::_construct();
 
@@ -62,7 +62,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      */
     public function getHeaderText()
     {
-        $item = $this->_coreRegistry->registry('current_{{VendorName}}_{{pluginName}}_items');
+        $item = $this->_coreRegistry->registry('current_{{VendorName}}_{{moduleName}}_items');
         if ($item->getId()) {
             return __("Edit Item '%1'", $this->escapeHtml($item->getName()));
         } else {

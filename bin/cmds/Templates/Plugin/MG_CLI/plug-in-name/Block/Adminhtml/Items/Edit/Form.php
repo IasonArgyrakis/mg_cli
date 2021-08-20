@@ -2,7 +2,7 @@
 /**
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
-namespace {{VendorName}}\\{{pluginName}}\Block\Adminhtml\Items\Edit;
+namespace {{VendorName}}\\{{moduleName}}\Block\Adminhtml\Items\Edit;
 
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
 {
@@ -30,7 +30,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             [
                 'data' => [
                     'id' => 'edit_form',
-                    'action' => $this->getUrl('{{VendorName}}_{{pluginName}}/items/save'),
+                    'action' => $this->getUrl('{{VendorName}}_{{moduleName}}/items/save'),
                     'method' => 'post',
                 ],
             ]

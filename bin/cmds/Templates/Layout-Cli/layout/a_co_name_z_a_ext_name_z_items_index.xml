@@ -7,11 +7,11 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="{{VendorName}}\{{pluginName}}\Block\Adminhtml\Items" name="adminhtml.block.promo.quote.grid.container">
+            <block class="{{VendorName}}\{{moduleName}}\Block\Adminhtml\Items" name="adminhtml.block.promo.quote.grid.container">
                 <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.block.promo.quote.grid" as="grid">
                     <arguments>
-                        <argument name="id" xsi:type="string">{{VendorName}}_{{pluginName}}_items_grid</argument>
-                        <argument name="dataSource" xsi:type="object">{{VendorName}}\{{pluginName}}\Model\Resource\Items\Collection</argument>
+                        <argument name="id" xsi:type="string">{{VendorName}}_{{moduleName}}_items_grid</argument>
+                        <argument name="dataSource" xsi:type="object">{{VendorName}}\{{moduleName}}\Model\Resource\Items\Collection</argument>
                         <argument name="default_sort" xsi:type="string">sort_order</argument>
                         <argument name="default_dir" xsi:type="string">ASC</argument>
                         <argument name="save_parameters_in_session" xsi:type="string">1</argument>
@@ -19,7 +19,7 @@
                     <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="adminhtml.promo.quote.grid.columnSet">
                         <arguments>
                             <argument name="rowUrl" xsi:type="array">
-                                <item name="path" xsi:type="string">{{VendorName}}_{{pluginName}}/*/edit</item>
+                                <item name="path" xsi:type="string">{{VendorName}}_{{moduleName}}/*/edit</item>
                                 <item name="extraParamsTemplate" xsi:type="array">
                                     <item name="id" xsi:type="string">getId</item>
                                 </item>

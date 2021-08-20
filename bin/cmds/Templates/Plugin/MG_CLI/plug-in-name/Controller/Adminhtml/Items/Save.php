@@ -3,15 +3,15 @@
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
 
-namespace {{VendorName}}\{{pluginName}}\Controller\Adminhtml\Items;
+namespace {{VendorName}}\{{moduleName}}\Controller\Adminhtml\Items;
 
-class Save extends \{{VendorName}}\{{pluginName}}\Controller\Adminhtml\Items
+class Save extends \{{VendorName}}\{{moduleName}}\Controller\Adminhtml\Items
 {
     public function execute()
     {
         if ($this->getRequest()->getPostValue()) {
             try {
-                $model = $this->_objectManager->create('{{VendorName}}\{{pluginName}}\Model\Items');
+                $model = $this->_objectManager->create('{{VendorName}}\{{moduleName}}\Model\Items');
                 $data = $this->getRequest()->getPostValue();
                 $inputFilter = new \Zend_Filter_Input(
                     [],
@@ -33,18 +33,18 @@ class Save extends \{{VendorName}}\{{pluginName}}\Controller\Adminhtml\Items
                 $this->messageManager->addSuccess(__('You saved the item.'));
                 $session->setPageData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('{{VendorName}}_{{pluginName}}/*/edit', ['id' => $model->getId()]);
+                    $this->_redirect('{{VendorName}}_{{moduleName}}/*/edit', ['id' => $model->getId()]);
                     return;
                 }
-                $this->_redirect('{{VendorName}}_{{pluginName}}/*/');
+                $this->_redirect('{{VendorName}}_{{moduleName}}/*/');
                 return;
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
                 $this->messageManager->addError($e->getMessage());
                 $id = (int)$this->getRequest()->getParam('id');
                 if (!empty($id)) {
-                    $this->_redirect('{{VendorName}}_{{pluginName}}/*/edit', ['id' => $id]);
+                    $this->_redirect('{{VendorName}}_{{moduleName}}/*/edit', ['id' => $id]);
                 } else {
-                    $this->_redirect('{{VendorName}}_{{pluginName}}/*/new');
+                    $this->_redirect('{{VendorName}}_{{moduleName}}/*/new');
                 }
                 return;
             } catch (\Exception $e) {
@@ -53,10 +53,10 @@ class Save extends \{{VendorName}}\{{pluginName}}\Controller\Adminhtml\Items
                 );
                 $this->_objectManager->get('Psr\Log\LoggerInterface')->critical($e);
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setPageData($data);
-                $this->_redirect('{{VendorName}}_{{pluginName}}/*/edit', ['id' => $this->getRequest()->getParam('id')]);
+                $this->_redirect('{{VendorName}}_{{moduleName}}/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
-        $this->_redirect('{{VendorName}}_{{pluginName}}/*/');
+        $this->_redirect('{{VendorName}}_{{moduleName}}/*/');
     }
 }

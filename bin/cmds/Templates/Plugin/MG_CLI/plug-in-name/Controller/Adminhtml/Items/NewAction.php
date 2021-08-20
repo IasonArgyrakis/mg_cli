@@ -3,9 +3,9 @@
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
 
-namespace {{VendorName}}\{{pluginName}}\Controller\Adminhtml\Items;
+namespace {{VendorName}}\{{moduleName}}\Controller\Adminhtml\Items;
 
-class NewAction extends \{{VendorName}}\{{pluginName}}\Controller\Adminhtml\Items
+class NewAction extends \{{VendorName}}\{{moduleName}}\Controller\Adminhtml\Items
 {
 
     public function execute()

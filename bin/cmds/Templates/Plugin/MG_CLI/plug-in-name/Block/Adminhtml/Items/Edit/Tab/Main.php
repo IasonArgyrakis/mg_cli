@@ -5,7 +5,7 @@
 
 // @codingStandardsIgnoreFile
 
-namespace {{VendorName}}\{{pluginName}}\Block\Adminhtml\Items\Edit\Tab;
+namespace {{VendorName}}\{{moduleName}}\Block\Adminhtml\Items\Edit\Tab;
 
 
 use Magento\Backend\Block\Widget\Form\Generic;
@@ -57,7 +57,7 @@ class Main extends Generic implements TabInterface
      */
     protected function _prepareForm()
     {
-        $model = $this->_coreRegistry->registry('current_{{VendorName}}_{{pluginName}}_items');
+        $model = $this->_coreRegistry->registry('current_{{VendorName}}_{{moduleName}}_items');
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create();
         $form->setHtmlIdPrefix('item_');

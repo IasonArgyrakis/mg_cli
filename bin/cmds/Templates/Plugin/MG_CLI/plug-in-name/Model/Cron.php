@@ -3,7 +3,7 @@
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
 
-namespace {{VendorName}}\{{pluginName}}\Model;
+namespace {{VendorName}}\{{moduleName}}\Model;
 
 class Cron extends \Magento\Framework\Model\AbstractModel
 {

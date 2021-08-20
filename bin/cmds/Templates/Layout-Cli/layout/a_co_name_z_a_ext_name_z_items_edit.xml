@@ -8,16 +8,16 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="left">
-            <block class="{{VendorName}}\{{pluginName}}\Block\Adminhtml\Items\Edit\Tabs" name="{{VendorName}}_{{pluginName}}_items_edit_tabs">
-                <block class="{{VendorName}}\{{pluginName}}\Block\Adminhtml\Items\Edit\Tab\Main" name="{{VendorName}}_{{pluginName}}_items_edit_tab_main"/>
+            <block class="{{VendorName}}\{{moduleName}}\Block\Adminhtml\Items\Edit\Tabs" name="{{VendorName}}_{{moduleName}}_items_edit_tabs">
+                <block class="{{VendorName}}\{{moduleName}}\Block\Adminhtml\Items\Edit\Tab\Main" name="{{VendorName}}_{{moduleName}}_items_edit_tab_main"/>
                 <action method="addTab">
                     <argument name="name" xsi:type="string">main_section</argument>
-                    <argument name="block" xsi:type="string">{{VendorName}}_{{pluginName}}_items_edit_tab_main</argument>
+                    <argument name="block" xsi:type="string">{{VendorName}}_{{moduleName}}_items_edit_tab_main</argument>
                 </action>
             </block>
         </referenceContainer>
         <referenceContainer name="content">
-            <block class="{{VendorName}}\{{pluginName}}\Block\Adminhtml\Items\Edit" name="{{pluginName}}_items_edit"/>
+            <block class="{{VendorName}}\{{moduleName}}\Block\Adminhtml\Items\Edit" name="{{moduleName}}_items_edit"/>
         </referenceContainer>
     </body>
 </page>

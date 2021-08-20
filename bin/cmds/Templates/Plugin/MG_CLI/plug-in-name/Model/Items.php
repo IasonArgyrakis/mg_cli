@@ -3,7 +3,7 @@
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
 
-namespace {{VendorName}}\{{pluginName}}\Model;
+namespace {{VendorName}}\{{moduleName}}\Model;
 
 class Items extends \Magento\Framework\Model\AbstractModel
 {
@@ -15,6 +15,6 @@ class Items extends \Magento\Framework\Model\AbstractModel
     protected function _construct()
     {
         parent::_construct();
-        $this->_init('{{VendorName}}\{{pluginName}}\Model\Resource\Items');
+        $this->_init('{{VendorName}}\{{moduleName}}\Model\Resource\Items');
     }
 }

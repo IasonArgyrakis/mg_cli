@@ -3,7 +3,7 @@
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
 
-namespace {{VendorName}}\{{pluginName}}\Setup;
+namespace {{VendorName}}\{{moduleName}}\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -17,7 +17,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $installer->startSetup();
         $table  = $installer->getConnection()
-            ->newTable($installer->getTable('{{VendorName}}_{{pluginName}}_items'))
+            ->newTable($installer->getTable('{{VendorName}}_{{moduleName}}_items'))
             ->addColumn(
                 'id',
                 \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,

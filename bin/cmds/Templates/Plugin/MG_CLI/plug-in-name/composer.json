@@ -1,6 +1,6 @@
 {
-  "name": "{{VendorName}}/{{pluginName}}",
-  "description": "{{VendorName}} {{pluginName}}",
+  "name": "{{VendorName}}/{{moduleName}}",
+  "description": "{{VendorName}} {{moduleName}}",
   "require": {
     "php": "~5.5.0|~5.6.0",
     "magento/magento-composer-installer": "*"
@@ -15,7 +15,7 @@
     "map": [
       [
         "*",
-        "{{VendorName}}/{{pluginName}}"
+        "{{VendorName}}/{{moduleName}}"
       ]
     ]
   }

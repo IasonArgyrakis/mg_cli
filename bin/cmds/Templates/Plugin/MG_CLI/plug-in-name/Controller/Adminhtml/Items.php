@@ -3,7 +3,7 @@
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
 
-namespace {{VendorName}}\{{pluginName}}\Controller\Adminhtml;
+namespace {{VendorName}}\{{moduleName}}\Controller\Adminhtml;
 
 /**
  * Items controller
@@ -55,7 +55,7 @@ abstract class Items extends \Magento\Backend\App\Action
     protected function _initAction()
     {
         $this->_view->loadLayout();
-        $this->_setActiveMenu('{{VendorName}}_{{pluginName}}::items')->_addBreadcrumb(__('Items'), __('Items'));
+        $this->_setActiveMenu('{{VendorName}}_{{moduleName}}::items')->_addBreadcrumb(__('Items'), __('Items'));
         return $this;
     }
 
@@ -66,6 +66,6 @@ abstract class Items extends \Magento\Backend\App\Action
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('{{VendorName}}_{{pluginName}}::items');
+        return $this->_authorization->isAllowed('{{VendorName}}_{{moduleName}}::items');
     }
 }

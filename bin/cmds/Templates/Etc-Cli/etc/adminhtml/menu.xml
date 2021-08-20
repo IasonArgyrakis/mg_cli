@@ -6,7 +6,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
     <menu>
-        <add id="{{VendorName}}::base" title="{{VendorName}}" module="{{VendorName}}_{{pluginName}}" sortOrder="90" resource="{{VendorName}}_{{pluginName}}::sample"/>
-        <add id="{{VendorName}}_{{pluginName}}::{{pluginName}}" title="{{toLowerCase blockclass}}" module="{{VendorName}}_{{pluginName}}" sortOrder="10" parent="{{VendorName}}::base" action="{{VendorName}}_{{pluginName}}/{{toLowerCase blockclass}}/" resource="{{VendorName}}_{{pluginName}}::{{toLowerCase blockclass}}"/>
+        <add id="{{VendorName}}::base" title="{{VendorName}}" module="{{VendorName}}_{{moduleName}}" sortOrder="90" resource="{{VendorName}}_{{moduleName}}::sample"/>
+        <add id="{{VendorName}}_{{moduleName}}::{{moduleName}}" title="{{toLowerCase blockclass}}" module="{{VendorName}}_{{moduleName}}" sortOrder="10" parent="{{VendorName}}::base" action="{{VendorName}}_{{moduleName}}/{{toLowerCase blockclass}}/" resource="{{VendorName}}_{{moduleName}}::{{toLowerCase blockclass}}"/>
     </menu>
 </config>

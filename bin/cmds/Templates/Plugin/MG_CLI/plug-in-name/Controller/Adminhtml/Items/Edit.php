@@ -3,21 +3,21 @@
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
 
-namespace {{VendorName}}\{{pluginName}}\Controller\Adminhtml\Items;
+namespace {{VendorName}}\{{moduleName}}\Controller\Adminhtml\Items;
 
-class Edit extends \{{VendorName}}\{{pluginName}}\Controller\Adminhtml\Items
+class Edit extends \{{VendorName}}\{{moduleName}}\Controller\Adminhtml\Items
 {
 
     public function execute()
     {
         $id = $this->getRequest()->getParam('id');
-        $model = $this->_objectManager->create('{{VendorName}}\{{pluginName}}\Model\Items');
+        $model = $this->_objectManager->create('{{VendorName}}\{{moduleName}}\Model\Items');
 
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
                 $this->messageManager->addError(__('This item no longer exists.'));
-                $this->_redirect('{{VendorName}}_{{pluginName}}/*');
+                $this->_redirect('{{VendorName}}_{{moduleName}}/*');
                 return;
             }
         }
@@ -26,7 +26,7 @@ class Edit extends \{{VendorName}}\{{pluginName}}\Controller\Adminhtml\Items
         if (!empty($data)) {
             $model->addData($data);
         }
-        $this->_coreRegistry->register('current_{{VendorName}}_{{pluginName}}_items', $model);
+        $this->_coreRegistry->register('current_{{VendorName}}_{{moduleName}}_items', $model);
         $this->_initAction();
         $this->_view->getLayout()->getBlock('items_items_edit');
         $this->_view->renderLayout();

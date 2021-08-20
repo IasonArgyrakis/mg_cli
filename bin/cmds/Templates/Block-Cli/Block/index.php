@@ -2,7 +2,7 @@
 /**
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
-namespace {{VendorName}}\\{{pluginName}}\Block\Adminhtml;
+namespace {{VendorName}}\\{{moduleName}}\Block\Adminhtml;
 
 class {{blockclass}} {{blockextends}}
 {

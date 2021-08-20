@@ -3,7 +3,7 @@
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
 
-namespace {{VendorName}}\\{{pluginName}}\Controller;
+namespace {{VendorName}}\\{{moduleName}}\Controller;
 
 /**
  * {{blockclass}} controller
@@ -54,7 +54,7 @@ abstract class {{blockclass}} {{blockextends}} {
     protected function _initAction()
     {
         $this->_view->loadLayout();
-        $this->_setActiveMenu('{{VendorName}}_{{pluginName}}::{{toLowerCase blockclass}}')->_addBreadcrumb(__('{{blockclass}}'), __('{{blockclass}}'));
+        $this->_setActiveMenu('{{VendorName}}_{{moduleName}}::{{toLowerCase blockclass}}')->_addBreadcrumb(__('{{blockclass}}'), __('{{blockclass}}'));
         return $this;
     }
 
@@ -65,6 +65,6 @@ abstract class {{blockclass}} {{blockextends}} {
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('{{VendorName}}_{{pluginName}}::{{toLowerCase blockclass}}');
+        return $this->_authorization->isAllowed('{{VendorName}}_{{moduleName}}::{{toLowerCase blockclass}}');
     }
 }

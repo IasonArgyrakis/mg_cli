@@ -3,7 +3,7 @@
  * Copyright © 2015 {{VendorName}}. All rights reserved.
  */
 
-namespace {{VendorName}}\{{pluginName}}\Model\Resource\Items;
+namespace {{VendorName}}\{{moduleName}}\Model\Resource\Items;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
@@ -14,6 +14,6 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init('{{VendorName}}\{{pluginName}}\Model\Items', '{{VendorName}}\{{pluginName}}\Model\Resource\Items');
+        $this->_init('{{VendorName}}\{{moduleName}}\Model\Items', '{{VendorName}}\{{moduleName}}\Model\Resource\Items');
     }
 }

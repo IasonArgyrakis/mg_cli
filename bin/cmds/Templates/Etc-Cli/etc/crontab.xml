@@ -6,7 +6,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../app/code/Magento/Cron/etc/crontab.xsd">
     <group id="default">
-        <job name="make_some_action_name_here" instance="{{VendorName}}\{{pluginName}}\Model\Cron" method="methodName">
+        <job name="make_some_action_name_here" instance="{{VendorName}}\{{moduleName}}\Model\Cron" method="methodName">
             <schedule>0 0 * * *</schedule>
         </job>
     </group>

@@ -6,8 +6,8 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/App/etc/routes.xsd">
     <router id="admin">
-        <route id="{{VendorName}}_{{pluginName}}" frontName="{{VendorName}}_{{pluginName}}">
-            <module name="{{VendorName}}_{{pluginName}}" />
+        <route id="{{VendorName}}_{{moduleName}}" frontName="{{VendorName}}_{{moduleName}}">
+            <module name="{{VendorName}}_{{moduleName}}" />
         </route>
     </router>
 </config>
