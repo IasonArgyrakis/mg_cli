@@ -1,6 +1,6 @@
 {
   "name": "mg_cli",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Make Extend and Overide Magento From the CLI",
   "main": "bin/cli.js",
   "scripts": {
@@ -23,10 +23,10 @@
     "boxen": "4.0",
     "chalk": "2.4",
     "dree": "^2.8.3",
-    "filerabit": "github:IasonArgyrakis/fileRabit",
+    "filerabit": "git+https://github.com/IasonArgyrakis/fileRabit.git",
     "glob": "^7.1.7",
     "handlebars": "^4.7.7",
     "npm-check-updates": "^11.8.3",
-    "yargs": "13.2"
+    "yargs": "^13.2.4"
   }
 }

@@ -16,9 +16,8 @@ exports.builder = {
 
 
 const fileRabit = require("filerabit")
-let pwd = process.env.PWD.toString();
 const chalk = require('chalk');
-
+const yargs = require("yargs");
 
 
 
@@ -36,17 +35,17 @@ handler = function (argv) {
 
   if (argv.debug) {
     console.log(argv);
-    console.log(pwd);
+    console.log(process.env.PWD);
   }
 
-  var vars = { VendorName: "MG_CLI", pluginName: "json", blockextends: undefined, blockclass: undefined };
+  var vars = { VendorName: "MGCLI", moduleName: "Json", blockextends: undefined, blockclass: undefined };
   // console.log(vars)
   //Make vendorname Ca
 
 if(argv.register){
   console.log(chalk.yellow("Registering Module as:"));
   console.log(chalk.yellow("       Vendor:",vars.VendorName));
-  console.log(chalk.yellow("       Module:",vars.pluginName));
+  console.log(chalk.yellow("       Module:",vars.moduleName));
   RegisterModule(vars)
   process.exit(1)
 
@@ -58,7 +57,7 @@ if(argv.register){
       break;
 
     case "boolean":
-      vars.blockextends = " extends \Magento\Backend\Block\Widget\Grid\Container"
+      vars.blockextends = " extends \\Magento\\Backend\\Block\\Widget\\Grid\\Container"
       break;
 
     case "string":
@@ -111,6 +110,25 @@ if(argv.register){
       process.exit(1)
 
     default:
+      break;
+  }
+
+  switch (typeof argv.h) {
+    
+    case "boolean":
+      vars.blockclass = "Data"
+      MakeHelper(vars)
+      
+
+      break;
+
+    case "string":
+    case "array":
+      console.log(chalk.red("you can only make a helper using --h  'use mg cli --h'  "));
+      
+
+    default:
+      process.exit(1)
       break;
   }
 
@@ -183,6 +201,17 @@ function MakeEtc(vars) {
 
   }
  
+}
+function MakeHelper(vars) {
+  console.log(chalk.yellow("Making Helper"))
+   vars['blockclass']="Helper";
+  let file_list = fileRabit.exploreNest(__dirname + "/Templates/Helper-Cli/");
+  for (let index = 0; index < file_list.length; index++) {
+    let element = file_list[index];
+    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Helper-Cli/")
+
+  }
+  
 }
 function MakeModel(vars) {
   console.log(chalk.yellow("Making Model/"))

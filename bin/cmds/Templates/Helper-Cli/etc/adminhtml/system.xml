@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="{{moduleName}}" translate="label" sortOrder="0">
+            <label>{{VendorName}}</label>
+        </tab>
+        <section id="Your_Section_id" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>{{moduleName}}</label>
+            <tab>{{VendorName}}</tab>
+            <resource>{{VendorName}}_{{moduleName}}::{{moduleName}}_config</resource>
+            <group id="Your_Group_Id" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Your Group Options Label</label>
+                <field id="Your_Id_toggle_option" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>toggle_option Label</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="Your_Id_textinput" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Your_Id_textinput Label</label>
+                    <comment>This</comment>
+                    <!-- <depends><field id="Your_Section_id/Your_Group_Id/Your_Id_toggle_option">1</field></depends> -->
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
