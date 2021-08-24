@@ -38,31 +38,31 @@ handler = function (argv) {
     console.log(process.env.PWD);
   }
 
-  var vars = { VendorName: "MGCLI", moduleName: "Json", blockextends: undefined, blockclass: undefined };
+  var docArguments = { VendorName: "MGCLI", moduleName: "Json", blockextends: undefined, blockclass: undefined,options:{exclude:undefined} };
   // console.log(vars)
   //Make vendorname Ca
 
 if(argv.register){
   console.log(chalk.yellow("Registering Module as:"));
-  console.log(chalk.yellow("       Vendor:",vars.VendorName));
-  console.log(chalk.yellow("       Module:",vars.moduleName));
-  RegisterModule(vars)
+  console.log(chalk.yellow("       Vendor:",docArguments.VendorName));
+  console.log(chalk.yellow("       Module:",docArguments.moduleName));
+  RegisterModule(docArguments)
   process.exit(1)
 
 }
 
   switch (typeof argv.e) {
     case "undefined":
-      vars.blockextends = "";
+      docArguments.blockextends = "";
       break;
 
     case "boolean":
-      vars.blockextends = " extends \\Magento\\Backend\\Block\\Widget\\Grid\\Container"
+      docArguments.blockextends = " extends \\Magento\\Backend\\Block\\Widget\\Grid\\Container"
       break;
 
     case "string":
       console.log(chalk.yellow('mg_cli cant read backslashes yet sorry....'));
-      vars.blockextends = " extends " + JSON.stringify(argv.e)
+      docArguments.blockextends = " extends " + JSON.stringify(argv.e)
       break;
 
     case "array":
@@ -82,8 +82,8 @@ if(argv.register){
       break;
 
     case "string":
-      vars.blockclass = argv.b
-      MakeBlocks(vars)
+      docArguments.blockclass = argv.b
+      MakeBlocks(docArguments)
       break;
 
     case "array":
@@ -101,8 +101,8 @@ if(argv.register){
       break;
 
     case "string":
-      vars.blockclass = argv.ctr
-      MakeControler(vars)
+      docArguments.blockclass = argv.ctr
+      MakeControler(docArguments)
       break;
 
     case "array":
@@ -113,11 +113,11 @@ if(argv.register){
       break;
   }
 
-  switch (typeof argv.h) {
+  switch (typeof argv.hlpr) {
     
     case "boolean":
-      vars.blockclass = "Data"
-      MakeHelper(vars)
+      docArguments.blockclass = "Data"
+      MakeHelper(docArguments)
       
 
       break;
@@ -139,8 +139,8 @@ if(argv.register){
       break;
 
     case "string":
-      vars.blockclass = argv.mdl
-      MakeControler(vars)
+      docArguments.blockclass = argv.mdl
+      MakeControler(docArguments)
       break;
 
     case "array":
@@ -191,20 +191,31 @@ function MakeControler(vars) {
   }
   
 }
-function MakeEtc(vars) {
+function MakeEtc(vars,bundle) {
   console.log(chalk.yellow("Making Etc/"))
+  //if budnle is defined it uses the subfolder bundle
+  if(bundle!=undefined){
+    bundle="bundle/"+bundle
+    vars.keepOriginalName=true;
+    vars.blockclass=undefined;
+    
+    
+  }
+  
 
-  let file_list = fileRabit.exploreNest(__dirname + "/Templates/Etc-Cli/");
+  let file_list = fileRabit.exploreNest(__dirname + "/Templates/Etc-Cli/"+bundle);
   for (let index = 0; index < file_list.length; index++) {
     let element = file_list[index];
-    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Etc-Cli/")
+    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Etc-Cli/"+bundle)
 
   }
  
 }
 function MakeHelper(vars) {
-  console.log(chalk.yellow("Making Helper"))
+  console.log(chalk.yellow("Making Helper/"))
    vars['blockclass']="Helper";
+   MakeEtc(vars,"Helper-Cli/");
+  
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Helper-Cli/");
   for (let index = 0; index < file_list.length; index++) {
     let element = file_list[index];
