@@ -117,24 +117,24 @@ if(argv.register){
       break;
   }
 
-  switch (typeof argv.hlpr) {
+  // switch (typeof argv.hlpr) {
     
-    case "boolean":
-      docArguments.blockclass = "Data"
-      MakeHelper(docArguments)
+  //   case "boolean":
+  //     docArguments.blockclass = "Data"
+  //     MakeHelper(docArguments)
       
 
-      break;
+  //     break;
 
-    case "string":
-    case "array":
-      console.log(chalk.red("you can only make a helper using --h  'use mg cli --h'  "));
+  //   case "string":
+  //   case "array":
+  //     console.log(chalk.red("you can only make a helper using --h  'use mg cli --h'  "));
       
 
-    default:
-      process.exit(1)
-      break;
-  }
+  //   default:
+  //     process.exit(1)
+  //     break;
+  // }
 
   switch (typeof argv.mdl) {
     case "boolean":
@@ -152,6 +152,30 @@ if(argv.register){
       process.exit(1)
 
     default:
+      break;
+  }
+
+  switch (typeof argv.obsrvr) {
+    
+    case "boolean":
+      docArguments.blockclass = "Data"
+      console.log(chalk.green("Helper Default Name"+docArguments.blockclass));
+      MakeObservers(docArguments)
+      
+
+      break;
+
+    case "string":
+      console.log(chalk.yellow("Helper will be renamed to: "+argv.obsrvr));
+      docArguments.blockclass = argv.obsrvr
+      MakeObserver(docArguments)
+      break;
+    case "array":
+      console.log(chalk.red("you can only make a helper using --h  'use mg cli --h'  "));
+      
+
+    default:
+      process.exit(1)
       break;
   }
 
