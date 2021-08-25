@@ -61,7 +61,7 @@ if(argv.register){
       break;
 
     case "string":
-      console.log(chalk.yellow('mg_cli cant read backslashes yet sorry....'));
+      console.log(chalk.yellow('mg_cli cant read backslashes yet sorry.... wrapp in quotes @TODO'));
       docArguments.blockextends = " extends " + JSON.stringify(argv.e)
       break;
 
@@ -94,14 +94,14 @@ if(argv.register){
       break;
   }
 
-  switch (typeof argv.ctr) {
+  switch (typeof argv.ctrl) {
     case "boolean":
       console.log(chalk.red("You Have to define a class name as 'mg g --ctr yourControlerName' "));
 
       break;
 
     case "string":
-      docArguments.blockclass = argv.ctr
+      docArguments.blockclass = argv.ctrl
       MakeControler(docArguments)
       break;
 
