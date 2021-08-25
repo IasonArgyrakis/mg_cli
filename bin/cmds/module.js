@@ -99,6 +99,7 @@ if(argv.register){
 
   switch (typeof argv.ctrlr) {
     case "boolean":
+      docArguments.blockclass = "Index"
       console.log(chalk.red("You Have to define a class name as 'mg g --ctr yourControlerName' "));
 
       break;
@@ -261,7 +262,7 @@ function MakeObserver(vars) {
 function MakeHelper(vars) {
   console.log(chalk.yellow("Making Helper/"))
    vars['blockclass']="Helper";
-   MakeEtc(vars,"Helper-Cli/");
+   
   
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Helper-Cli/");
   for (let index = 0; index < file_list.length; index++) {
@@ -269,6 +270,7 @@ function MakeHelper(vars) {
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Helper-Cli/")
 
   }
+  MakeEtc(vars,"Helper-Cli/");
   
 }
 
@@ -279,14 +281,16 @@ function MakeEtc(vars,bundle) {
   if(bundle!=undefined){
     bundle="bundle/"+bundle
     vars.keepOriginalName=true;
-    vars.blockclass=undefined;    
+    //vars.blockclass=undefined;    
   }
+  else{bundle=""}
   
 
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Etc-Cli/"+bundle);
+  console.log(file_list)
   for (let index = 0; index < file_list.length; index++) {
     let element = file_list[index];
-    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Etc-Cli/"+bundle)
+    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Etc-Cli/")
 
   }
  
