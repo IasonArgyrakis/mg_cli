@@ -117,24 +117,6 @@ if(argv.register){
       break;
   }
 
-  // switch (typeof argv.hlpr) {
-    
-  //   case "boolean":
-  //     docArguments.blockclass = "Data"
-  //     MakeHelper(docArguments)
-      
-
-  //     break;
-
-  //   case "string":
-  //   case "array":
-  //     console.log(chalk.red("you can only make a helper using --h  'use mg cli --h'  "));
-      
-
-  //   default:
-  //     process.exit(1)
-  //     break;
-  // }
 
   switch (typeof argv.mdl) {
     case "boolean":
@@ -179,7 +161,7 @@ if(argv.register){
       break;
   }
 
-  switch (typeof argv.hlpr) {
+  switch (typeof argv.helper) {
     
     case "boolean":
       docArguments.blockclass = "Data"
@@ -190,8 +172,8 @@ if(argv.register){
       break;
 
     case "string":
-      console.log(chalk.yellow("Helper will be renamed to: "+argv.hlpr));
-      docArguments.blockclass = argv.hlpr
+      console.log(chalk.yellow("Helper will be renamed to: "+argv.helper));
+      docArguments.blockclass = argv.helper
       MakeHelper(docArguments)
       break;
     case "array":
@@ -294,7 +276,7 @@ function MakeHelper(vars) {
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Helper-Cli/")
 
   }
-  MakeEtc(vars,"Helper-Cli/");
+  //MakeEtc(vars,"Helper-Cli/");
   
 }
 

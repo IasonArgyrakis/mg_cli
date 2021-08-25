@@ -24,6 +24,7 @@
     "chalk": "2.4",
     "dree": "^2.8.3",
     "filerabit": "git+https://github.com/IasonArgyrakis/fileRabit.git",
+    "g": "^2.0.1",
     "glob": "^7.1.7",
     "handlebars": "^4.7.7",
     "npm-check-updates": "^11.8.3",
