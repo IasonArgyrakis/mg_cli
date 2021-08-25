@@ -130,6 +130,8 @@ Directives : placeholder
 - [ ]   integration with directives for subfolders of each class created. Must be multiple directives and subfolders as well
 
 - [x]   camel case validation for class names passed as directives
+- [ ]   guide for templating + extending
+- [ ]   fix varnames refactor
 
 
 ---
