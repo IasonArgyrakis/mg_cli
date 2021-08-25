@@ -201,6 +201,9 @@ function MakeBlocks(vars) {
 }
 function MakeControler(vars) {
   console.log(chalk.yellow("Making Controler/"))
+  if(vars.blockextends){
+  vars.blockextends = " extends \\Magento\\Framework\\App\\Action\\Action"
+  }
 
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Controler-Cli/");
   for (let index = 0; index < file_list.length; index++) {

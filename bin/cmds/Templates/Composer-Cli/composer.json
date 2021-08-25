@@ -1,6 +1,6 @@
 {
-    "name": "{{FirstLetterCapital VendorName}}/{{FirstLetterCapital pluginName}}",
-    "description": "{{FirstLetterCapital VendorName}} {{FirstLetterCapital pluginName}}",
+    "name": "{{FirstLetterCapital VendorName}}/{{FirstLetterCapital moduleName}}",
+    "description": "{{FirstLetterCapital VendorName}} {{FirstLetterCapital moduleName}}",
     "require": {
       "php": "~5.5.0|~5.6.0",
       "magento/magento-composer-installer": "*"
@@ -15,7 +15,7 @@
       "map": [
         [
           "*",
-          "{{FirstLetterCapital VendorName}}/{{FirstLetterCapital pluginName}}"
+          "{{FirstLetterCapital VendorName}}/{{FirstLetterCapital moduleName}}"
         ]
       ]
     }
