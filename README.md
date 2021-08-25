@@ -19,7 +19,7 @@ Have one built in in your cli
  3. `cd npm install` to download all the required libs
  3. `npm install -g . ` to install the current dir as a library 
  
- One Line Install: `git clone https://github.com/IasonArgyrakis/mg_cli.git && cd mg_cli && npm install -g . `
+ One Line Install: `npm install --save https://github.com/IasonArgyrakis/mg_cli.git `
  
 
 
@@ -46,7 +46,7 @@ To make a `Block` folder with a `myblockname.php` inside
 ---
 `mg g --b myotherblockname --e`
 
-To make a `Block` folder with a `myotherblockname.php` that extends `\Magento\Backend\Block\Widget\Grid\Container`
+To make a `Block` folder with a `myotherblockname.php` that extends `\Magento\Framework\View\Element\Template`
 
 ---
 
@@ -57,7 +57,11 @@ NOTE: the terminal does not recognise backslashes !
 
 ---
 
-`mg g --ctr myotherblockname `
+`mg g --ctrlr myotherblockname `
+
+`--e` extends  `\Magento\Framework\App\Action\Action`
+
+`--e    "your\path\forSmth" ` extends  `your\path\forSmth`
 
 To make a `Controler` folder with a `myotherblockname.php`  
 NOTE: the terminal does not recognise backslashes !
@@ -66,8 +70,25 @@ NOTE: the terminal does not recognise backslashes !
 
 `mg g --mdl myotherblockname `
 
-To make a `Model` folder with a `myotherblockname.php`  
+To make a `Model` folder with a `myotherblockname.php` 
+
+`--e` extends  `\Magento\Framework\Model\AbstractModel`
+
+`--e    "your\path\forSmth" ` extends  `your\path\forSmth`
 NOTE: the terminal does not recognise backslashes !
+
+---
+
+`mg g --obsrvr myotherblockname `
+
+`--e` extends  `\Magento\Framework\Event\ObserverInterface`
+
+`--e    "your\path\forSmth" ` extends  `your\path\forSmth`
+
+To make a `Controler` folder with a `myotherblockname.php`  
+NOTE: the terminal does not recognise backslashes !
+
+---
 
 
 ---
