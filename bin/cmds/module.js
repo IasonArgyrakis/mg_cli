@@ -181,7 +181,7 @@ if(argv.register){
       
 
     default:
-      process.exit(1)
+      
       break;
   }
 
