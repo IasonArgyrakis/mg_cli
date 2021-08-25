@@ -151,6 +151,25 @@ if(argv.register){
       break;
   }
 
+  switch (typeof argv.hlpr) {
+    
+    case "boolean":
+      docArguments.blockclass = "Data"
+      MakeHelper(docArguments)
+      
+
+      break;
+
+    case "string":
+    case "array":
+      console.log(chalk.red("you can only make a helper using --h  'use mg cli --h'  "));
+      
+
+    default:
+      process.exit(1)
+      break;
+  }
+
 
 
 
@@ -235,6 +254,7 @@ function MakeModel(vars) {
   
 }
 function RegisterModule(vars) {
+  vars.keepOriginalName=true;
 
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Composer-Cli/");
   for (let index = 0; index < file_list.length; index++) {
