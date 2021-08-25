@@ -32,30 +32,25 @@ Have one built in in your cli
 
 `--b` for Block
 
-`--ctr` for Controler
+`--ctrlr` for Controler
 
 `--mdl` for Model
 
+`--obsrvr` for Observer
+
 ## Guide
 
+### Block
 
 `mg g --b myblockname` 
 
-To make a `Block` folder with a `myblockname.php` inside
+`--e` extends  `\Magento\Framework\View\Element\Template`
 
----
-`mg g --b myotherblockname --e`
-
-To make a `Block` folder with a `myotherblockname.php` that extends `\Magento\Framework\View\Element\Template`
+`--e    "your\path\forSmth" ` extends  `your\path\forSmth`
 
 ---
 
-`mg g --b myotherblockname --e yourStringHere`
-
-To make a `Block` folder with a `myotherblockname.php` that extends `yourStringHere` 
-NOTE: the terminal does not recognise backslashes !
-
----
+### Controler
 
 `mg g --ctrlr myotherblockname `
 
@@ -64,13 +59,12 @@ NOTE: the terminal does not recognise backslashes !
 `--e    "your\path\forSmth" ` extends  `your\path\forSmth`
 
 To make a `Controler` folder with a `myotherblockname.php`  
-NOTE: the terminal does not recognise backslashes !
 
 ---
 
-`mg g --mdl myotherblockname `
+### Model
 
-To make a `Model` folder with a `myotherblockname.php` 
+`mg g --mdl myotherblockname `
 
 `--e` extends  `\Magento\Framework\Model\AbstractModel`
 
@@ -78,6 +72,8 @@ To make a `Model` folder with a `myotherblockname.php`
 NOTE: the terminal does not recognise backslashes !
 
 ---
+
+### Observer
 
 `mg g --obsrvr myotherblockname `
 
