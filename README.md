@@ -69,7 +69,6 @@ To make a `Controler` folder with a `myotherblockname.php`
 `--e` extends  `\Magento\Framework\Model\AbstractModel`
 
 `--e    "your\path\forSmth" ` extends  `your\path\forSmth`
-NOTE: the terminal does not recognise backslashes !
 
 ---
 
@@ -81,8 +80,28 @@ NOTE: the terminal does not recognise backslashes !
 
 `--e    "your\path\forSmth" ` extends  `your\path\forSmth`
 
-To make a `Controler` folder with a `myotherblockname.php`  
-NOTE: the terminal does not recognise backslashes !
+---
+
+### Helper
+
+`mg g --hlpr `
+
+`--e` extends  `\Magento\Framework\App\Helper\AbstractHelper`
+
+`--e    "your\path\forSmth" ` extends  `your\path\forSmth`
+
+---
+
+### etc
+
+etc is assitive to other it is made as a budle 
+if you wish to make a budle check extending @todo Extending...
+
+`mg g --obsrvr myotherblockname `
+
+`--e` extends  `\Magento\Framework\Event\ObserverInterface`
+
+`--e    "your\path\forSmth" ` extends  `your\path\forSmth`
 
 ---
 

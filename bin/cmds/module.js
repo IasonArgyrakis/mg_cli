@@ -18,6 +18,7 @@ exports.builder = {
 const fileRabit = require("filerabit")
 const chalk = require('chalk');
 const yargs = require("yargs");
+const { argv } = require("process")
 
 
 
@@ -57,11 +58,12 @@ if(argv.register){
       break;
 
     case "boolean":
-      docArguments.blockextends = " extends \\Magento\\Backend\\Block\\Widget\\Grid\\Container"
+      docArguments.blockextends = true;
+      
       break;
 
     case "string":
-      console.log(chalk.yellow('mg_cli cant read backslashes yet sorry.... wrapp in quotes @TODO'));
+      
       docArguments.blockextends = " extends " + JSON.stringify(argv.e)
       break;
 
@@ -79,6 +81,7 @@ if(argv.register){
   switch (typeof argv.b) {
     case "boolean":
       console.log(chalk.red("You Have to define a class name as 'mg g --b yourBlockName' "));
+      process.exit(1)
       break;
 
     case "string":
@@ -94,14 +97,14 @@ if(argv.register){
       break;
   }
 
-  switch (typeof argv.ctrl) {
+  switch (typeof argv.ctrlr) {
     case "boolean":
       console.log(chalk.red("You Have to define a class name as 'mg g --ctr yourControlerName' "));
 
       break;
 
     case "string":
-      docArguments.blockclass = argv.ctrl
+      docArguments.blockclass = argv.ctrlr
       MakeControler(docArguments)
       break;
 
@@ -155,12 +158,17 @@ if(argv.register){
     
     case "boolean":
       docArguments.blockclass = "Data"
+      console.log(chalk.green("Helper Default Name"+docArguments.blockclass));
       MakeHelper(docArguments)
       
 
       break;
 
     case "string":
+      console.log(chalk.yellow("Helper will be renamed to: "+argv.hlpr));
+      docArguments.blockclass = argv.hlpr
+      MakeHelper(docArguments)
+      break;
     case "array":
       console.log(chalk.red("you can only make a helper using --h  'use mg cli --h'  "));
       
@@ -190,6 +198,9 @@ if(argv.register){
 
 function MakeBlocks(vars) {
   console.log(chalk.yellow("Making Blocks/"))
+  if(vars.blockextends){
+    vars.blockextends=" extends \\Magento\\Framework\\View\\Element\\Template"
+  }
   
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Block-Cli/");
   for (let index = 0; index < file_list.length; index++) {
@@ -199,6 +210,7 @@ function MakeBlocks(vars) {
   }
  
 }
+
 function MakeControler(vars) {
   console.log(chalk.yellow("Making Controler/"))
   if(vars.blockextends){
@@ -213,26 +225,39 @@ function MakeControler(vars) {
   }
   
 }
-function MakeEtc(vars,bundle) {
-  console.log(chalk.yellow("Making Etc/"))
-  //if budnle is defined it uses the subfolder bundle
-  if(bundle!=undefined){
-    bundle="bundle/"+bundle
-    vars.keepOriginalName=true;
-    vars.blockclass=undefined;
-    
-    
-  }
-  
 
-  let file_list = fileRabit.exploreNest(__dirname + "/Templates/Etc-Cli/"+bundle);
+function MakeModel(vars) {
+  console.log(chalk.yellow("Making Model/"))
+  if(vars.blockextends){
+    vars.blockextends = " extends \\Magento\\Framework\\Model\\AbstractModel"
+    }
+
+  let file_list = fileRabit.exploreNest(__dirname + "/Templates/Model-Cli/");
   for (let index = 0; index < file_list.length; index++) {
     let element = file_list[index];
-    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Etc-Cli/"+bundle)
+    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Model-Cli/")
 
   }
- 
+  
 }
+
+//obs
+function MakeObserver(vars) {
+  console.log(chalk.yellow("Making Observer/"))
+  if(vars.blockextends){
+    vars.blockextends = " extends \\Magento\\Framework\\Event\\ObserverInterface"
+    }
+
+  let file_list = fileRabit.exploreNest(__dirname + "/Templates/Observer-Cli/");
+  for (let index = 0; index < file_list.length; index++) {
+    let element = file_list[index];
+    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Observer-Cli/")
+
+  }
+  
+}
+
+//helper
 function MakeHelper(vars) {
   console.log(chalk.yellow("Making Helper/"))
    vars['blockclass']="Helper";
@@ -246,16 +271,28 @@ function MakeHelper(vars) {
   }
   
 }
-function MakeModel(vars) {
-  console.log(chalk.yellow("Making Model/"))
-  let file_list = fileRabit.exploreNest(__dirname + "/Templates/Model-Cli/");
-  for (let index = 0; index < file_list.length; index++) {
-    let element = file_list[index];
-    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Model-Cli/")
 
+function MakeEtc(vars,bundle) {
+  console.log(chalk.yellow("Making Etc/"))
+  //if budnle is defined it uses the subfolder bundle
+  //when naming a new bundle use the orginal folder tempalate 
+  if(bundle!=undefined){
+    bundle="bundle/"+bundle
+    vars.keepOriginalName=true;
+    vars.blockclass=undefined;    
   }
   
+
+  let file_list = fileRabit.exploreNest(__dirname + "/Templates/Etc-Cli/"+bundle);
+  for (let index = 0; index < file_list.length; index++) {
+    let element = file_list[index];
+    fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Etc-Cli/"+bundle)
+
+  }
+ 
 }
+
+
 function RegisterModule(vars) {
   vars.keepOriginalName=true;
 
