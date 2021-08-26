@@ -33,13 +33,14 @@ const readline = require('readline').createInterface({
 handler = function (argv) {
 
 
-
+  
   if (argv.debug) {
-    console.log(argv.derper);
-    console.log(process.env.PWD);
+    console.log(argv);
+    console.log(process.cwd());
   }
 
-  var docArguments = { VendorName: "MGCLI", moduleName: "Json", blockextends: undefined, blockclass: undefined,options:{exclude:undefined} };
+  var docArguments = { VendorName: "MGCLI", moduleName: "Json", blockextends: undefined, blockclass: undefined,cwd:process.cwd() };
+  
   // console.log(vars)
   //Make vendorname Ca
 
