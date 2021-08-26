@@ -161,7 +161,7 @@ if(argv.register){
       break;
   }
 
-  switch (typeof argv.helper) {
+  switch (typeof argv.helpr) {
     
     case "boolean":
       docArguments.blockclass = "Data"
@@ -172,8 +172,8 @@ if(argv.register){
       break;
 
     case "string":
-      console.log(chalk.yellow("Helper will be renamed to: "+argv.helper));
-      docArguments.blockclass = argv.helper
+      console.log(chalk.yellow("Helper will be renamed to: "+argv.helpr));
+      docArguments.blockclass = argv.helpr
       MakeHelper(docArguments)
       break;
     case "array":
