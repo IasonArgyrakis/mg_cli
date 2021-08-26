@@ -35,7 +35,7 @@ handler = function (argv) {
 
 
   if (argv.debug) {
-    console.log(argv);
+    console.log(argv.derper);
     console.log(process.env.PWD);
   }
 
@@ -71,9 +71,6 @@ if(argv.register){
       console.log(chalk.yellow("mg_cli does not yet support multiple block extension sorry...."));
       process.exit(1)
       break;
-
-    default:
-      break;
   }
 
 
@@ -91,16 +88,14 @@ if(argv.register){
 
     case "array":
       console.log(chalk.red("mg_cli does not yet support multiple block creation sorry...."));
-      process.exit(1)
-
-    default:
+      process.exit(1);
       break;
   }
 
   switch (typeof argv.ctrlr) {
     case "boolean":
       docArguments.blockclass = "Index"
-      console.log(chalk.red("You Have to define a class name as 'mg g --ctr yourControlerName' "));
+      MakeControler(docArguments)
 
       break;
 
@@ -112,8 +107,6 @@ if(argv.register){
     case "array":
       console.log(chalk.red("mg_cli does not yet support multiple block creation sorry...."));
       process.exit(1)
-
-    default:
       break;
   }
 
@@ -132,8 +125,6 @@ if(argv.register){
     case "array":
       console.log(chalk.red("mg_cli does not yet support multiple Model creation sorry...."));
       process.exit(1)
-
-    default:
       break;
   }
 
@@ -151,22 +142,19 @@ if(argv.register){
       console.log(chalk.yellow("Helper will be renamed to: "+argv.obsrvr));
       docArguments.blockclass = argv.obsrvr
       MakeObserver(docArguments)
-      break;
+      
     case "array":
-      console.log(chalk.red("you can only make a helper using --h  'use mg cli --h'  "));
+      console.log(chalk.red("you can only make one Observer"));
+      break;
       
 
-    default:
-      process.exit(1)
-      break;
   }
 
-  switch (typeof argv.helpr) {
-    
+  switch (typeof argv.helpr) {    
     case "boolean":
       docArguments.blockclass = "Data"
-      console.log(chalk.green("Helper Default Name"+docArguments.blockclass));
-      MakeHelper(docArguments)
+      console.log(chalk.green("Helper Default Name: "+docArguments.blockclass));
+      MakeHelper(docArguments);
       
 
       break;
@@ -176,13 +164,9 @@ if(argv.register){
       docArguments.blockclass = argv.helpr
       MakeHelper(docArguments)
       break;
-    case "array":
-      console.log(chalk.red("you can only make a helper using --h  'use mg cli --h'  "));
-      
-
-    default:
-      
-      break;
+      case "array":
+        console.log(chalk.red("you can only make one Helper"));
+        break;
   }
 
 
@@ -267,7 +251,6 @@ function MakeObserver(vars) {
 //helper
 function MakeHelper(vars) {
   console.log(chalk.yellow("Making Helper/"))
-   vars['blockclass']="Helper";
    
   
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Helper-Cli/");
