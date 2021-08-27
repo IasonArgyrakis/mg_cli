@@ -76,10 +76,7 @@ if(argv.register){
       break;
   }
   switch (typeof argv.create) {
-    case "undefined":
-      docArguments.blockextends = "";
-      break;
-
+    
     case "boolean":
         if( argv.create && typeof argv.vendor != "undefined" && typeof argv.module != "undefined"){
           docArguments.VendorName = argv.vendor;
@@ -89,13 +86,14 @@ if(argv.register){
           console.log(chalk.yellow("       ModuleName:",docArguments.moduleName));
 
           MakeVendorModule(docArguments);
-        }else{
-          console.log(chalk.red("Undefined --vendor or/and --module. You must define both when --create"))
-          console.log(chalk.yellow("ex: mg g --create --vendor VendorName --module ModuleName"))
-          process.exit(1);
         }
-
-      break;
+         
+        break;
+        
+      default:
+        console.log(chalk.red("Undefined --vendor or/and --module. You must define both when --create"))
+        console.log(chalk.yellow("ex: mg g --create --vendor VendorName --module ModuleName"))
+        break;
 
   }
 
@@ -331,7 +329,14 @@ function MakeVendorModule( vars ) {
     fs.mkdir(vars.VendorName+'/'+vars.moduleName,{ recursive: true }, (err) => {
     console.log(err)
   });
-  process.chdir(vars.VendorName+'/'+vars.moduleName);
+  try {
+    process.chdir(vars.VendorName+'/'+vars.moduleName);
+    
+  } catch (error) {
+    console.log(error)
+    
+  }
+ 
   RegisterModule( vars );
 }
 
