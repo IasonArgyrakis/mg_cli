@@ -40,6 +40,16 @@ Have one built in in your cli
 
 ## Guide
 
+### Create Module Structure
+
+`mg g --create --vendor VendorName --module ModuleName` 
+
+`--vendor` and `--module` are both required when passing `--create` argument
+
+Hooks to `--register`
+
+---
+
 ### Block
 
 `mg g --b myblockname` 
