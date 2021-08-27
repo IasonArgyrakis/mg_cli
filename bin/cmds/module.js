@@ -1,5 +1,5 @@
 exports.command = 'g []' //this is the prompt help `[name]` defines the argv.na property
- 
+
 exports.desc = 'ng equivalalent for magento2 \n \n https://github.com/IasonArgyrakis/mg_cli/blob/main/README.md#quickstart'
 exports.help = 'https://github.com/IasonArgyrakis/mg_cli/blob/main/README.md#quickstart'
 exports.builder = {
@@ -15,10 +15,12 @@ exports.builder = {
 
 
 
-const fileRabit = require("filerabit")
+const fileRabit = require("filerabit");
 const chalk = require('chalk');
 const yargs = require("yargs");
-const { argv } = require("process")
+const { argv } = require("process");
+const fs = require('fs');
+const paths = require("path");
 
 
 
@@ -33,14 +35,14 @@ const readline = require('readline').createInterface({
 handler = function (argv) {
 
 
-  
+
   if (argv.debug) {
     console.log(argv);
     console.log(process.cwd());
   }
 
   var docArguments = { VendorName: "MGCLI", moduleName: "Json", blockextends: undefined, blockclass: undefined,cwd:process.cwd() };
-  
+
   // console.log(vars)
   //Make vendorname Ca
 
@@ -60,11 +62,11 @@ if(argv.register){
 
     case "boolean":
       docArguments.blockextends = true;
-      
+
       break;
 
     case "string":
-      
+
       docArguments.blockextends = " extends " + JSON.stringify(argv.e)
       break;
 
@@ -72,6 +74,29 @@ if(argv.register){
       console.log(chalk.yellow("mg_cli does not yet support multiple block extension sorry...."));
       process.exit(1)
       break;
+  }
+  switch (typeof argv.create) {
+    case "undefined":
+      docArguments.blockextends = "";
+      break;
+
+    case "boolean":
+        if( argv.create && typeof argv.vendor != "undefined" && typeof argv.module != "undefined"){
+          docArguments.VendorName = argv.vendor;
+          docArguments.moduleName = argv.module;
+
+          console.log(chalk.yellow("       Vendor:",docArguments.VendorName));
+          console.log(chalk.yellow("       ModuleName:",docArguments.moduleName));
+
+          MakeVendorModule(docArguments);
+        }else{
+          console.log(chalk.red("Undefined --vendor or/and --module. You must define both when --create"))
+          console.log(chalk.yellow("ex: mg g --create --vendor VendorName --module ModuleName"))
+          process.exit(1);
+        }
+
+      break;
+
   }
 
 
@@ -130,12 +155,12 @@ if(argv.register){
   }
 
   switch (typeof argv.obsrvr) {
-    
+
     case "boolean":
       docArguments.blockclass = "Data"
       console.log(chalk.green("Helper Default Name"+docArguments.blockclass));
       MakeObservers(docArguments)
-      
+
 
       break;
 
@@ -143,20 +168,20 @@ if(argv.register){
       console.log(chalk.yellow("Helper will be renamed to: "+argv.obsrvr));
       docArguments.blockclass = argv.obsrvr
       MakeObserver(docArguments)
-      
+
     case "array":
       console.log(chalk.red("you can only make one Observer"));
       break;
-      
+
 
   }
 
-  switch (typeof argv.helpr) {    
+  switch (typeof argv.helpr) {
     case "boolean":
       docArguments.blockclass = "Data"
       console.log(chalk.green("Helper Default Name: "+docArguments.blockclass));
       MakeHelper(docArguments);
-      
+
 
       break;
 
@@ -193,14 +218,14 @@ function MakeBlocks(vars) {
   if(vars.blockextends){
     vars.blockextends=" extends \\Magento\\Framework\\View\\Element\\Template"
   }
-  
+
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Block-Cli/");
   for (let index = 0; index < file_list.length; index++) {
     let element = file_list[index];
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Block-Cli/")
 
   }
- 
+
 }
 
 function MakeControler(vars) {
@@ -215,7 +240,7 @@ function MakeControler(vars) {
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Controler-Cli/")
 
   }
-  
+
 }
 
 function MakeModel(vars) {
@@ -230,7 +255,7 @@ function MakeModel(vars) {
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Model-Cli/")
 
   }
-  
+
 }
 
 //obs
@@ -246,14 +271,14 @@ function MakeObserver(vars) {
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Observer-Cli/")
 
   }
-  
+
 }
 
 //helper
 function MakeHelper(vars) {
   console.log(chalk.yellow("Making Helper/"))
-   
-  
+
+
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Helper-Cli/");
   for (let index = 0; index < file_list.length; index++) {
     let element = file_list[index];
@@ -261,20 +286,20 @@ function MakeHelper(vars) {
 
   }
   //MakeEtc(vars,"Helper-Cli/");
-  
+
 }
 
 function MakeEtc(vars,bundle) {
   console.log(chalk.yellow("Making Etc/"))
   //if budnle is defined it uses the subfolder bundle
-  //when naming a new bundle use the orginal folder tempalate 
+  //when naming a new bundle use the orginal folder tempalate
   if(bundle!=undefined){
     bundle="bundle/"+bundle
     vars.keepOriginalName=true;
-    //vars.blockclass=undefined;    
+    //vars.blockclass=undefined;
   }
   else{bundle=""}
-  
+
 
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Etc-Cli/"+bundle);
   console.log(file_list)
@@ -283,7 +308,7 @@ function MakeEtc(vars,bundle) {
     fileRabit.createFileFromRelativePath(element, vars, __dirname + "/Templates/Etc-Cli/")
 
   }
- 
+
 }
 
 
@@ -297,6 +322,19 @@ function RegisterModule(vars) {
 
   }
 }
+
+function MakeVendorModule( vars ) {
+
+    fs.mkdir(vars.VendorName,{ recursive: true }, (err) => {
+        console.log(err)
+    });
+    fs.mkdir(vars.VendorName+'/'+vars.moduleName,{ recursive: true }, (err) => {
+    console.log(err)
+  });
+  process.chdir(vars.VendorName+'/'+vars.moduleName);
+  RegisterModule( vars );
+}
+
 
 
 
