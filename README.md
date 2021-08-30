@@ -19,7 +19,6 @@ Have one built in in your cli
  3. `npm install` to download all the required libs
  3. `npm install -g . ` to install the current dir as a library 
  
- One Line Install: `npm install --save https://github.com/IasonArgyrakis/mg_cli.git `
  
 
 
