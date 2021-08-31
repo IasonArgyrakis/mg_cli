@@ -1,6 +1,6 @@
 {
   "name": "mg_cli",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Make Extend and Overide Magento From the CLI",
   "main": "bin/cli.js",
   "scripts": {
