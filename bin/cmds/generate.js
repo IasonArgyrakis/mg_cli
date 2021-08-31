@@ -90,10 +90,10 @@ if(argv.register){
          
         break;
         
-      default:
+        case "string":
         console.log(chalk.red("Undefined --vendor or/and --module. You must define both when --create"))
         console.log(chalk.yellow("ex: mg g --create --vendor VendorName --module ModuleName"))
-        break;
+      
 
   }
 
