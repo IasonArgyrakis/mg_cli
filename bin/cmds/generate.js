@@ -1,6 +1,6 @@
 exports.command = 'g []' //this is the prompt help `[name]` defines the argv.na property
 
-exports.desc = 'ng equivalalent for magento2 \n \n https://github.com/IasonArgyrakis/mg_cli/blob/main/README.md#quickstart'
+exports.desc = 'Dynamicaly generate Blocks Controllers Helpers etc... '
 exports.help = 'https://github.com/IasonArgyrakis/mg_cli/blob/main/README.md#quickstart'
 exports.builder = {
   no_config: {
@@ -40,9 +40,10 @@ handler = function (argv) {
     console.log(argv);
     console.log(process.cwd());
   }
+  
 
-  var docArguments = { VendorName: "MGCLI", moduleName: "Json", blockextends: undefined, blockclass: undefined,cwd:process.cwd() };
-
+  var docArguments = { VendorName: "", moduleName: "", blockextends: undefined, blockclass: undefined,cwd:process.cwd() };
+  Object.assign(docArguments,findModuleInfo())
   // console.log(vars)
   //Make vendorname Ca
 
@@ -338,6 +339,37 @@ function MakeVendorModule( vars ) {
   }
  
   RegisterModule( vars );
+}
+
+function findModuleInfo()
+{
+  let data
+  //console.log("looking for "+chalk.yellow("'registration.php'"))
+  try {
+     data = fs.readFileSync('./registration.php',{encoding:'utf8', flag:'r'});
+    
+  } catch (e) {
+    console.log(e)
+    if(e.errno=-4058){
+    console.log(chalk.red("Registration not found make one first") )
+    process.exit(1)}
+  }
+
+   let Vendor_Module=ParseRegisterFile(data).split("_")
+  return { VendorName: Vendor_Module[0], moduleName: Vendor_Module[1] }
+ 
+  
+  function ParseRegisterFile(fileContent){
+   let moduleRegex=/('+(([A-Z])+([A-z]*))+_+(([A-Z])+([A-z]*))+')/g
+   found=fileContent.match(moduleRegex);
+  
+   if(found==null){ console.log(chalk.red("Module Name Apears to be incorect")+"\n"+chalk.yellow("Check register.php") );process.exit(1)}
+  else
+  console.log(chalk.green("'registration.php' found"))
+     return found[0].slice(1,-1)
+
+  }
+
 }
 
 

@@ -1,4 +1,4 @@
-exports.command = 'e []' //this is the prompt help `[name]` defines the argv.na property
+exports.command = 'p []' //this is the prompt help `[name]` defines the argv.na property
 
 exports.desc = 'ng equivalalent for magento2 \n \n https://github.com/IasonArgyrakis/mg_cli/blob/main/README.md#quickstart'
 exports.help = 'https://github.com/IasonArgyrakis/mg_cli/blob/main/README.md#quickstart'
