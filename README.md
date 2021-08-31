@@ -177,7 +177,7 @@ Directives : placeholder
 - [x]   camel case validation for class names passed as directives
 - [ ]   guide for templating + extending
 - [ ]   fix varnames refactor
-
+- [ ]   add ui block feature as a  (xmlplace name  + tempalates/html/<name>.pthml+ make web js for that 
 
 ---
 
