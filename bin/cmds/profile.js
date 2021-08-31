@@ -62,7 +62,7 @@ handler = function (argv) {
         default:
             break;
     }
-    switch (typeof argv.find) {
+    switch (typeof argv.save) {
         case "sa":
             //look for registration .php
             
