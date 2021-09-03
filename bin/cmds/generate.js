@@ -1,14 +1,12 @@
+
 exports.command = 'g []' //this is the prompt help `[name]` defines the argv.na property
 
 exports.desc = 'Dynamicaly generate Blocks Controllers Helpers etc... '
 exports.help = 'https://github.com/IasonArgyrakis/mg_cli/blob/main/README.md#quickstart'
 exports.builder = {
-  no_config: {
-    default: true
+  b: {
+    desc:" @toDo "
   },
-  // block: {
-  //   default: true
-  // },
 
 }
 
@@ -34,7 +32,7 @@ const readline = require('readline').createInterface({
 
 handler = function (argv) {
 
-
+  
 
   if (argv.debug) {
     console.log(argv);
@@ -43,18 +41,14 @@ handler = function (argv) {
   
 
   var docArguments = { VendorName: "", moduleName: "", blockextends: undefined, blockclass: undefined,cwd:process.cwd() };
-  Object.assign(docArguments,findModuleInfo())
+ 
   // console.log(vars)
   //Make vendorname Ca
 
-if(argv.register){
-  console.log(chalk.yellow("Registering Module as:"));
-  console.log(chalk.yellow("       Vendor:",docArguments.VendorName));
-  console.log(chalk.yellow("       Module:",docArguments.moduleName));
-  RegisterModule(docArguments)
-  process.exit(1)
+  
 
-}
+
+
 
   switch (typeof argv.e) {
     case "undefined":
@@ -67,15 +61,16 @@ if(argv.register){
       break;
 
     case "string":
-
-      docArguments.blockextends = " extends " + JSON.stringify(argv.e)
+      let extension=argv.e;
+      docArguments.blockextends = " extends " + JSON.stringify(extension).slice(1,-1)
       break;
 
     case "array":
       console.log(chalk.yellow("mg_cli does not yet support multiple block extension sorry...."));
       process.exit(1)
-      break;
+      
   }
+  
   switch (typeof argv.create) {
     
     case "boolean":
@@ -97,7 +92,9 @@ if(argv.register){
       
 
   }
-
+  
+  console.log(chalk.blue("Looking for ")+chalk.yellow("registartion.php"))
+  Object.assign(docArguments,findModuleInfo())
 
 
   switch (typeof argv.b) {
@@ -214,9 +211,11 @@ if(argv.register){
 
 function MakeBlocks(vars) {
   console.log(chalk.yellow("Making Blocks/"))
-  if(vars.blockextends){
+  console.log( vars.blockextends );
+  if(typeof vars.blockextends=="boolean"){
     vars.blockextends=" extends \\Magento\\Framework\\View\\Element\\Template"
   }
+  console.log(vars);
 
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Block-Cli/");
   for (let index = 0; index < file_list.length; index++) {
@@ -229,7 +228,7 @@ function MakeBlocks(vars) {
 
 function MakeControler(vars) {
   console.log(chalk.yellow("Making Controler/"))
-  if(vars.blockextends){
+  if(typeof vars.blockextends=="boolean"){
   vars.blockextends = " extends \\Magento\\Framework\\App\\Action\\Action"
   }
 
@@ -244,9 +243,10 @@ function MakeControler(vars) {
 
 function MakeModel(vars) {
   console.log(chalk.yellow("Making Model/"))
-  if(vars.blockextends){
+    if(typeof vars.blockextends=="boolean"){
     vars.blockextends = " extends \\Magento\\Framework\\Model\\AbstractModel"
     }
+    
 
   let file_list = fileRabit.exploreNest(__dirname + "/Templates/Model-Cli/");
   for (let index = 0; index < file_list.length; index++) {
@@ -260,7 +260,7 @@ function MakeModel(vars) {
 //obs
 function MakeObserver(vars) {
   console.log(chalk.yellow("Making Observer/"))
-  if(vars.blockextends){
+  if(typeof vars.blockextends=="boolean"){
     vars.blockextends = " extends \\Magento\\Framework\\Event\\ObserverInterface"
     }
 
@@ -349,13 +349,17 @@ function findModuleInfo()
      data = fs.readFileSync('./registration.php',{encoding:'utf8', flag:'r'});
     
   } catch (e) {
-    console.log(e)
-    if(e.errno=-4058){
+    //console.log(e)
+    if( e.errno == -4058){
     console.log(chalk.red("Registration not found make one first") )
+    console.log(chalk.yellow("mg g --create --vendor VendorName --module ModuleName") )
     process.exit(1)}
   }
 
    let Vendor_Module=ParseRegisterFile(data).split("_")
+
+
+
   return { VendorName: Vendor_Module[0], moduleName: Vendor_Module[1] }
  
   
@@ -363,10 +367,12 @@ function findModuleInfo()
    let moduleRegex=/('+(([A-Z])+([A-z]*))+_+(([A-Z])+([A-z]*))+')/g
    found=fileContent.match(moduleRegex);
   
-   if(found==null){ console.log(chalk.red("Module Name Apears to be incorect")+"\n"+chalk.yellow("Check register.php") );process.exit(1)}
-  else
-  console.log(chalk.green("'registration.php' found"))
-     return found[0].slice(1,-1)
+   if(found==null){
+      console.log(chalk.red("Module Name Apears to be incorect")+"\n"+chalk.yellow("Check register.php") );process.exit(1)
+  }
+  else{
+  console.log(chalk.yellow("registartion.php")+chalk.green(" found"))
+     return found[0].slice(1,-1)}
 
   }
 
