@@ -27,7 +27,7 @@ Have one built in in your cli
    `mg g`
 --
 
-`--register` to make `registration.php` & `composer.json`
+`--create` to make `Vendor/module` then `registration.php` & `composer.json`
 
 `--b` for Block
 
